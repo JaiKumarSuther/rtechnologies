@@ -101,7 +101,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="pt-24 relative overflow-hidden">
+    <section id="contact" className="relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-20">
         <motion.div

@@ -65,7 +65,7 @@ const Header = () => {
             </div>
             <div className="flex flex-col">
               <span className="text-xl font-bold font-mono text-gradient">
-                R-TECH
+                R TECHNOLOGIES
               </span>
               <span className="text-xs text-primary/70 font-mono">./dev/code</span>
             </div>
