@@ -93,11 +93,11 @@ const Footer = () => {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center">
               <img 
                 src={rtechLogo} 
                 alt="R Technologies" 
-                className="h-10 w-auto filter brightness-110"
+                className="h-20 w-auto filter brightness-110"
               />
               <div className="text-xl font-bold text-gradient">
                 R TECHNOLOGIES

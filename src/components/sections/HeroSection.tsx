@@ -110,17 +110,25 @@ const HeroSection = () => {
       {/* Main Content */}
       <div ref={heroRef} className="relative z-20 text-center px-4 sm:px-6 max-w-6xl mx-auto w-full">
         <ScrollAnimation direction="scale" delay={0.2}>
-          <div ref={textRef} className="pt-16 md:pt-24">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 leading-tight">
+          <div ref={textRef} className="pt-20">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 leading-tight ">
               {words.map((word, index) => (
                 <span 
+                  key={index} 
+                  className="word inline-block mr-2 sm:mr-3 md:mr-4 opacity-0 translate-y-10 text-white"
+                  style={{
+                    transition: `opacity 0.5s ease, transform 0.5s ease`,
+                    transitionDelay: `${index * 0.1}s`
+                  }}
+                >
+                {/* <span 
                   key={index} 
                   className="word inline-block mr-2 sm:mr-3 md:mr-4 opacity-0 translate-y-10 text-gradient text-shadow-glow"
                   style={{
                     transition: `opacity 0.5s ease, transform 0.5s ease`,
                     transitionDelay: `${index * 0.1}s`
                   }}
-                >
+                > */}
                   {word}
                 </span>
               ))}
@@ -129,13 +137,20 @@ const HeroSection = () => {
         </ScrollAnimation>
 
         <ScrollAnimation direction="up" delay={0.8}>
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-6 md:mb-8 max-w-3xl lg:max-w-4xl mx-auto leading-relaxed px-4">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white mb-6 md:mb-8 max-w-3xl lg:max-w-4xl mx-auto leading-relaxed px-4">
+            Custom software, websites, and digital products that don't just look good—they perform.
+            <br className="hidden sm:block" />
+            <span className="inline-block mt-2 text-white font-semibold">
+              At R TECHNOLOGIES, we turn your business ideas into scalable, user-friendly tech that drives real growth.
+            </span>
+          </p>
+          {/* <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-6 md:mb-8 max-w-3xl lg:max-w-4xl mx-auto leading-relaxed px-4">
             Custom software, websites, and digital products that don't just look good—they perform.
             <br className="hidden sm:block" />
             <span className="inline-block mt-2 text-gradient font-semibold">
               At R TECHNOLOGIES, we turn your business ideas into scalable, user-friendly tech that drives real growth.
             </span>
-          </p>
+          </p> */}
         </ScrollAnimation>
 
         <ScrollAnimation direction="up" delay={1.2}>

@@ -130,7 +130,7 @@ const ContactSection = () => {
         />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-6 relative z-10 pt-[10px]">
         {/* Section Header */}
         <ScrollAnimation direction="up" className="text-center mb-20">
           <motion.div

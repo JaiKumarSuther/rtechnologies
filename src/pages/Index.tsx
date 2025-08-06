@@ -10,6 +10,8 @@ import ServicesSection from '@/components/sections/ServicesSection';
 import AboutSection from '@/components/sections/AboutSection';
 import ContactSection from '@/components/sections/ContactSection';
 import VideoComponent from '@/components/sections/VideoComponent';
+import TestimonialsSection from '@/components/sections/TestimonialsSection';
+import TeamMembers from '@/components/sections/TeamMembers';
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -69,6 +71,8 @@ const Index = () => {
         <HeroSection />
         <VideoComponent/>
         <ServicesSection />
+        <TeamMembers />
+        <TestimonialsSection />
         <AboutSection />
         <ContactSection />
       </main>
