@@ -150,7 +150,7 @@ const ServicesSection = () => {
 
                   {/* Learn More Link */}
                   <motion.div
-                    className="flex items-center gap-2 text-primary font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer"
+                    className="flex items-center gap-2 text-primary font-medium opacity-70 group-hover:opacity-100 transition-all duration-300 cursor-pointer"
                     whileHover={{ x: 5 }}
                   >
                     <span>Learn More</span>

@@ -54,7 +54,7 @@ const Index = () => {
 
   return (
     <motion.div
-      className="min-h-screen bg-background relative overflow-x-hidden"
+      className="min-h-screen  bg-background relative overflow-x-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: isVisible ? 1 : 0 }}
       transition={{ duration: 0.8 }}
