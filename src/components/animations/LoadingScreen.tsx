@@ -81,7 +81,7 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
               <motion.img
                 src={rtechLogo}
                 alt="R Technologies"
-                className="h-20 w-auto mx-auto filter brightness-110"
+                className="h-[200px] w-auto mx-auto filter brightness-110"
                 animate={{ 
                   filter: [
                     "brightness(110%) drop-shadow(0 0 20px hsl(var(--primary) / 0.3))",
