@@ -6,8 +6,8 @@ const VideoComponent = () => {
 
   // Spring animation for enhanced 3D effect
   const [style, api] = useSpring(() => ({
-    transform: 'perspective(1000px) rotateY(0deg) scale(1)',
-    boxShadow: '0px 10px 40px rgba(0, 0, 0, 0.2)', // Add some shadow for depth
+    transform: 'perspective(1000px) scale(1)', // No rotation, only scaling
+    boxShadow: '0px 10px 40px rgba(0, 0, 0, 0.2)', // Initial shadow for depth
     config: { mass: 1, tension: 280, friction: 60 }, // Smooth animation with damping
   }));
 
@@ -22,21 +22,18 @@ const VideoComponent = () => {
     if (videoRef.current) {
       videoRef.current.play();
     }
-    // Apply rotation, scaling, and shadow increase for a more immersive 3D effect
+    // Apply scale and shadow effect for a 3D-like zoom effect
     api.start({
-      transform: 'perspective(1000px) rotateY(15deg) scale(1.05)',
-      boxShadow: '0px 20px 60px rgba(0, 0, 0, 0.3)',
+      transform: 'perspective(1000px) scale(1.1)', // Zoom in for 3D effect
+      boxShadow: '0px 20px 60px rgba(0, 0, 0, 0.3)', // Enhanced shadow
     });
   };
 
   const handleMouseLeave = () => {
-    if (videoRef.current) {
-      videoRef.current.pause();
-    }
     // Reset to initial state
     api.start({
-      transform: 'perspective(1000px) rotateY(0deg) scale(1)',
-      boxShadow: '0px 10px 40px rgba(0, 0, 0, 0.2)',
+      transform: 'perspective(1000px) scale(1)', // Reset scale to normal size
+      boxShadow: '0px 10px 40px rgba(0, 0, 0, 0.2)', // Reset shadow
     });
   };
 
