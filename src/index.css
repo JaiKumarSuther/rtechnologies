@@ -9,30 +9,30 @@
   :root {
     /* Ultra Dark Theme */
     --background: 210 10% 5%; /* Extremely dark background */
-    --foreground: 180 100% 95%; /* Bright text for high contrast */
+    --foreground: 0 0% 95%; /* Bright white text for high contrast */
     
     --card: 210 10% 3%; /* Dark card background */
-    --card-foreground: 180 100% 95%; /* Light text on cards */
+    --card-foreground: 0 0% 95%; /* Light white text on cards */
     
     --popover: 210 10% 5%; /* Darker popover */
-    --popover-foreground: 180 100% 95%; /* Light text in popover */
+    --popover-foreground: 0 0% 95%; /* Light white text in popover */
     
     /* Primary Color - Deep teal accent for a professional look */
     --primary: 190 85% 35%; /* Deep teal for primary accent */
-    --primary-foreground: 180 100% 98%; /* Very light text for primary elements */
+    --primary-foreground: 0 0% 98%; /* Very light white text for primary elements */
     --primary-glow: 190 85% 45%; /* Bright teal glow */
     --primary-dark: 190 60% 25%; /* Darker teal color */
     
     /* Secondary Colors - Deep greys */
     --secondary: 0 0% 5%; /* Deepest grey */
-    --secondary-foreground: 180 100% 95%; /* Very light text for secondary */
+    --secondary-foreground: 0 0% 95%; /* Very light white text for secondary */
     
     --muted: 0 0% 7%; /* Very dark muted grey */
-    --muted-foreground: 180 100% 80%; /* Muted text but bright enough for contrast */
+    --muted-foreground: 0 0% 75%; /* Muted text - softer white for better readability */
     
-    --accent: 135 80% 55%; /* Accent color - muted green for subtle highlights */
-    --accent-foreground: 180 100% 15%; /* Darker text on accent elements */
-    --accent-glow: 135 80% 65%; /* Accent glow effect */
+    --accent: 190 85% 60%; /* Accent color - bright teal for highlights */
+    --accent-foreground: 0 0% 10%; /* Dark text on accent elements */
+    --accent-glow: 190 85% 70%; /* Accent glow effect */
     
     --destructive: 0 85% 45%; /* Red color for destructive actions */
     --destructive-foreground: 180 100% 98%; /* Lighter text for destructive elements */

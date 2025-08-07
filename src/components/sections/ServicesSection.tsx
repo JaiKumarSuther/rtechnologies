@@ -77,7 +77,7 @@ const ServicesSection = () => {
         {/* Section Header */}
         <ScrollAnimation direction="up" className="text-center mb-20">
           <motion.div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/30 mb-6"
             whileHover={{ scale: 1.05 }}
           >
             <Sparkles size={16} className="text-primary" />
@@ -88,7 +88,7 @@ const ServicesSection = () => {
             Smart Tech. Sharp Growth.
           </h2>
           
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             We craft digital experiences that go beyond the ordinary. Every service is engineered for results, powered by code, and designed for impact.
           </p>
         </ScrollAnimation>
@@ -102,7 +102,7 @@ const ServicesSection = () => {
               delay={service.delay}
             >
               <Card3D 
-                className="h-full p-6 group"
+                className="h-full p-6 group bg-gray-900/50 backdrop-blur-sm border border-gray-800/50"
                 intensity={25}
                 scaleOnHover={true}
                 shadowIntensity={0.4}
@@ -137,21 +137,21 @@ const ServicesSection = () => {
                   </div>
 
                   {/* Content */}
-                  <h3 className="text-xl font-bold mb-2 text-gradient group-hover:text-primary transition-colors duration-300">
+                  <h3 className="text-xl font-bold mb-2 text-white group-hover:text-primary transition-colors duration-300">
                     {service.title}
                   </h3>
                   
-                  <p className="text-sm font-medium text-accent mb-4">
+                  <p className="text-sm font-medium text-primary mb-4">
                     {service.subtitle}
                   </p>
                   
-                  <p className="text-muted-foreground leading-relaxed mb-6">
+                  <p className="text-gray-300 leading-relaxed mb-6">
                     {service.description}
                   </p>
 
                   {/* Learn More Link */}
                   <motion.div
-                    className="flex items-center gap-2 text-primary font-medium opacity-70 group-hover:opacity-100 transition-all duration-300 cursor-pointer"
+                    className="flex items-center gap-2 text-primary font-medium opacity-90 group-hover:opacity-100 transition-all duration-300 cursor-pointer"
                     whileHover={{ x: 5 }}
                   >
                     <span>Learn More</span>
@@ -181,7 +181,7 @@ const ServicesSection = () => {
               </Button3D>
             </motion.div>
             
-            <p className="text-sm text-muted-foreground mt-4">
+            <p className="text-sm text-gray-400 mt-4">
               Free consultation • Custom solutions • Award-winning results
             </p>
           </div>
