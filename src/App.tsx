@@ -11,6 +11,7 @@ import ProjectDetail from "./pages/ProjectDetail";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import MouseFollower3D from "@/components/animations/MouseFollower3D";
+import AIChatbot from "@/components/ui/AIChatbot";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ const App = () => (
         trailLength={10}
         intensity={20}
       />
+      <AIChatbot />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />

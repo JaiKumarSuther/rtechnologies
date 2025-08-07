@@ -15,25 +15,40 @@ import TestimonialsSection from '@/components/sections/TestimonialsSection';
 
 const Index = () => {
   // Check if this is a fresh page load (not navigation)
-  const isFreshLoad = !sessionStorage.getItem('hasLoaded');
+  // Use a more reliable method to detect fresh page loads
+  const [isFreshLoad, setIsFreshLoad] = useState(true);
   
   const [loadingState, setLoadingState] = useState({
-    isLoading: isFreshLoad,
+    isLoading: true,
     assetsLoaded: false,
     minimumTimeElapsed: false
   });
-  const [isVisible, setIsVisible] = useState(!isFreshLoad);
-  const [loadingScreenComplete, setLoadingScreenComplete] = useState(!isFreshLoad);
+  const [isVisible, setIsVisible] = useState(false);
+  const [loadingScreenComplete, setLoadingScreenComplete] = useState(false);
   const loadingTimeoutRef = useRef<NodeJS.Timeout>();
 
   useEffect(() => {
-    // Skip loading if not a fresh load
-    if (!isFreshLoad) {
+    // Check if this is a fresh page load by looking at performance navigation type
+    const isPageRefresh = performance.navigation.type === 1 || 
+                         performance.getEntriesByType('navigation')[0]?.type === 'reload';
+    
+    // Also check if we're coming from a different domain or no referrer
+    const hasReferrer = document.referrer && 
+                       document.referrer.includes(window.location.hostname);
+    
+    const shouldShowLoading = isPageRefresh || !hasReferrer;
+    setIsFreshLoad(shouldShowLoading);
+    
+    if (!shouldShowLoading) {
+      // If it's not a fresh load, skip loading
       setLoadingState(prev => ({
         ...prev,
+        isLoading: false,
         assetsLoaded: true,
         minimumTimeElapsed: true
       }));
+      setIsVisible(true);
+      setLoadingScreenComplete(true);
       return;
     }
 
@@ -60,8 +75,8 @@ const Index = () => {
         return new Promise((resolve) => {
           const img = new Image();
           img.src = src;
-          img.onload = resolve;
-          img.onerror = resolve; // Continue even if some images fail
+          img.onload = () => resolve(true);
+          img.onerror = () => resolve(false); // Continue even if some images fail
         });
       })
     ).then(() => {
@@ -76,14 +91,11 @@ const Index = () => {
         clearTimeout(loadingTimeoutRef.current);
       }
     };
-  }, [isFreshLoad]);
+  }, []);
 
   useEffect(() => {
     // Only complete loading when both conditions are met AND loading screen is complete
     if (loadingState.assetsLoaded && loadingState.minimumTimeElapsed && loadingScreenComplete) {
-      // Mark that the page has been loaded
-      sessionStorage.setItem('hasLoaded', 'true');
-      
       // Start showing main content with a slight delay for smoother overlap
       setTimeout(() => {
         setIsVisible(true);
