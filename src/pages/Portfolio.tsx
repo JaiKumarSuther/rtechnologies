@@ -8,34 +8,51 @@ import { Card3D } from '@/components/ui/Card3D';
 import ScrollAnimation from '@/components/animations/ScrollAnimations';
 import FloatingParticles from '@/components/animations/FloatingParticles';
 import MouseFollower from '@/components/animations/MouseFollower';
+import MobileAppPreview from '@/components/ui/MobileAppPreview';
 
 // Import project images
 import checkin1 from '@/assets/checkin-1.1.webp';
 import checkin2 from '@/assets/checkin-1.2.webp';
 import checkin3 from '@/assets/checkin-1.3.webp';
+import checkin4 from '@/assets/checkin-2.1.webp';
+import checkin5 from '@/assets/checkin-2.2.webp';
+import checkin6 from '@/assets/checkin-2.3.webp';
 import holla1 from '@/assets/gorrila-2.1.webp';
 import holla2 from '@/assets/gorrila-2.2.webp';
 import holla3 from '@/assets/gorrila-2.3.webp';
+import holla4 from '@/assets/gorrila.webp';
 import guided1 from '@/assets/guided-by-culture-1.webp';
 import guided2 from '@/assets/guided-by-culture-2.1.webp';
 import guided3 from '@/assets/guided-by-culture-2.2.webp';
+import guided4 from '@/assets/guided-by-culture-2.3.webp';
 import nursery1 from '@/assets/nursery-app-1.webp';
 import nursery2 from '@/assets/nursery-app-2.webp';
 import nursery3 from '@/assets/nursery-app-3.1.webp';
+import nursery4 from '@/assets/nursery-app-3.2.webp';
+import nursery5 from '@/assets/nursery-app-3.3.webp';
 import dance1 from '@/assets/dance-around-1.webp';
 import dance2 from '@/assets/dance-around-2.webp';
 import blush1 from '@/assets/blush-app-1.1.webp';
 import blush2 from '@/assets/blush-app-1.2.webp';
 import blush3 from '@/assets/blush-app-1.3.webp';
+import blush4 from '@/assets/blush-app-2.1.webp';
+import blush5 from '@/assets/blush-app-2.2.webp';
+import blush6 from '@/assets/blush-app-2.3.webp';
 import iptv1 from '@/assets/iptv-1.webp';
 import iptv2 from '@/assets/iptv-2.webp';
 import iptv3 from '@/assets/iptv-3.webp';
+import iptv4 from '@/assets/iptv-4.1.webp';
+import iptv5 from '@/assets/iptv-4.2.webp';
+import iptv6 from '@/assets/iptv-4.3.webp';
 import hitechie1 from '@/assets/hitechie-1.webp';
 import hitechie2 from '@/assets/hitechie-2.1.webp';
 import hitechie3 from '@/assets/hitechie-2.2.webp';
+import hitechie4 from '@/assets/hitechie-2.3.webp';
 import fixit1 from '@/assets/fixit-1.webp';
 import fixit2 from '@/assets/fixit-2.webp';
 import fixit3 from '@/assets/fixit-3.1.webp';
+import fixit4 from '@/assets/fixit-3.2.webp';
+import fixit5 from '@/assets/fixit-3.3.webp';
 
 const Portfolio = () => {
   const navigate = useNavigate();
@@ -47,7 +64,7 @@ const Portfolio = () => {
       title: 'Check In',
       tagline: 'Meeting with new people',
       description: 'A location-based social app that enables users to check in at nearby venues, connect with others, and engage in real-time chats.',
-      images: [checkin1, checkin2, checkin3],
+      images: [checkin1, checkin2, checkin3, checkin4, checkin5, checkin6],
       technologies: ['Flutter', 'Node.js', 'MySQL', 'Google Places API'],
       gradient: 'from-orange-500 to-red-600'
     },
@@ -56,7 +73,7 @@ const Portfolio = () => {
       title: 'Holla Gorilla',
       tagline: 'Find, Meet And Make New Friends',
       description: 'A vibrant social app that connects users through location-based matching, group chats, and real-time event discovery.',
-      images: [holla1, holla2, holla3],
+      images: [holla1, holla2, holla3, holla4],
       technologies: ['Flutter', 'Node.js', 'Firebase'],
       gradient: 'from-green-500 to-emerald-600'
     },
@@ -65,7 +82,7 @@ const Portfolio = () => {
       title: 'Guided by Culture',
       tagline: 'Find Mentors and schedule lessons',
       description: 'A mentorship app where mentees can hire mentors, chat, arrange meetings, and pay for mentorship services.',
-      images: [guided1, guided2, guided3],
+      images: [guided1, guided2, guided3, guided4],
       technologies: ['Flutter', 'Spring Boot', 'Firebase'],
       gradient: 'from-blue-500 to-indigo-600'
     },
@@ -74,7 +91,7 @@ const Portfolio = () => {
       title: 'Nursery App',
       tagline: 'Nannies supervise while parents monitor',
       description: 'Streamlines nursery management with dedicated panels for students, nannies, admins, and financers.',
-      images: [nursery1, nursery2, nursery3],
+      images: [nursery1, nursery2, nursery3, nursery4, nursery5],
       technologies: ['Flutter', 'Node.js', 'Next.js', 'TypeScript'],
       gradient: 'from-purple-500 to-pink-600'
     },
@@ -92,7 +109,7 @@ const Portfolio = () => {
       title: 'Blush App',
       tagline: 'Find Friends, Meet and Eat Together',
       description: 'A hookah bar app where users can explore various hookah flavors, order food, and book events.',
-      images: [blush1, blush2, blush3],
+      images: [blush1, blush2, blush3, blush4, blush5, blush6],
       technologies: ['Flutter', 'Node.js'],
       gradient: 'from-red-500 to-pink-600'
     },
@@ -101,7 +118,7 @@ const Portfolio = () => {
       title: 'IPTV',
       tagline: 'Internet Protocol Television',
       description: 'IPTV apps allow users to stream live TV, video-on-demand, and time-shifted media over the internet.',
-      images: [iptv1, iptv2, iptv3],
+      images: [iptv1, iptv2, iptv3, iptv4, iptv5, iptv6],
       technologies: ['Flutter', 'Node.js', 'Firebase'],
       gradient: 'from-gray-500 to-slate-600'
     },
@@ -110,7 +127,7 @@ const Portfolio = () => {
       title: 'Hitechie',
       tagline: 'Connect With Professionals',
       description: 'A job and freelance marketplace app where users can apply for jobs across various domains or hire freelancers.',
-      images: [hitechie1, hitechie2, hitechie3],
+      images: [hitechie1, hitechie2, hitechie3, hitechie4],
       technologies: ['Flutter', 'Node.js', 'Firebase'],
       gradient: 'from-cyan-500 to-blue-600'
     },
@@ -119,7 +136,7 @@ const Portfolio = () => {
       title: 'Fixit',
       tagline: 'Find Service Providers Around You',
       description: 'A service booking app where users can negotiate offers from service providers for tasks like home repairs or cleaning.',
-      images: [fixit1, fixit2, fixit3],
+      images: [fixit1, fixit2, fixit3, fixit4, fixit5],
       technologies: ['Flutter', 'Node.js', 'Firebase'],
       gradient: 'from-emerald-500 to-green-600'
     }
@@ -180,15 +197,15 @@ const Portfolio = () => {
                     shadowIntensity={0.4}
                   >
                     {/* Project Image */}
-                    <div className="relative h-64 md:h-80 overflow-hidden">
-                       <motion.img
-                         src={project.images[0]}
-                         alt={project.title}
-                         className="w-full h-full object-cover"
-                         whileHover={{ scale: 1.1 }}
-                         transition={{ duration: 0.3 }}
-                       />
-                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="relative h-64 md:h-80 overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center">
+                       {/* Mobile App Preview */}
+                       <div className="w-full h-full flex items-center justify-center p-4">
+                                                   <MobileAppPreview
+                            images={project.images}
+                            title={project.title}
+                            maxImages={6}
+                          />
+                       </div>
                        
                        {/* Gradient Overlay */}
                        <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-20 group-hover:opacity-30 transition-opacity duration-300`} />

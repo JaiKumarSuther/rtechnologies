@@ -786,3 +786,247 @@ button, a, input, textarea, select, [role="button"], [tabindex] {
   color: #059669;
 }
 
+/* Mobile App Screenshot Styles */
+.mobile-frame {
+  box-shadow: 
+    0 0 0 2px rgba(255, 255, 255, 0.1),
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    0 6px 20px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-frame:hover {
+  box-shadow: 
+    0 0 0 2px rgba(255, 255, 255, 0.2),
+    0 16px 50px rgba(0, 0, 0, 0.5),
+    0 8px 25px rgba(0, 0, 0, 0.4),
+    0 0 25px rgba(59, 130, 246, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+}
+
+/* Enhanced Mobile Frame Animations */
+@keyframes mobile-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+.mobile-frame-animated {
+  animation: mobile-float 3s ease-in-out infinite;
+}
+
+/* Screenshot Grid Enhancements */
+.screenshot-group {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(59, 130, 246, 0.04) 100%);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  margin-bottom: 2rem;
+}
+
+.screenshot-group:hover {
+  border-color: rgba(59, 130, 246, 0.2);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
+  transform: translateY(-2px);
+}
+
+/* Enhanced Screenshot Container */
+.screenshot-container {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0.01) 100%);
+  border-radius: 2rem;
+  padding: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+/* Project Detail Layout Enhancements */
+.project-detail-section {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(59, 130, 246, 0.02) 100%);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  border: 1px solid rgba(59, 130, 246, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.project-detail-section:hover {
+  border-color: rgba(59, 130, 246, 0.2);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(59, 130, 246, 0.04) 100%);
+  transform: translateY(-2px);
+}
+
+/* Two Column Layout Enhancements */
+.two-column-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .two-column-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Feature Card Enhancements */
+.feature-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+}
+
+/* Tech Stack Grid */
+.tech-stack-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Project Meta Info */
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Call to Action Section */
+.cta-section {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
+  border-radius: 2rem;
+  padding: 3rem;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  text-align: center;
+}
+
+/* Large Screenshot Display */
+.screenshot-large {
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.screenshot-frame-large {
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
+}
+
+.screenshot-frame-large:hover {
+  transform: scale(1.3);
+}
+
+/* Enhanced Lightbox Styles */
+.lightbox-enhanced {
+  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.lightbox-controls {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.lightbox-controls:hover {
+  background: rgba(0, 0, 0, 0.8);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+/* Screen Type Specific Styles */
+.screen-login {
+  border: 2px solid rgba(59, 130, 246, 0.3);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+}
+
+.screen-main {
+  border: 2px solid rgba(16, 185, 129, 0.3);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.1);
+}
+
+.screen-feature {
+  border: 2px solid rgba(245, 158, 11, 0.3);
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.1);
+}
+
+.screen-settings {
+  border: 2px solid rgba(139, 92, 246, 0.3);
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.1);
+}
+
+/* Dynamic Layout Enhancements */
+.screenshot-section {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.02) 0%, rgba(59, 130, 246, 0.01) 100%);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  border: 1px solid rgba(59, 130, 246, 0.05);
+  margin-bottom: 2rem;
+}
+
+.screenshot-section:hover {
+  border-color: rgba(59, 130, 246, 0.1);
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.03) 0%, rgba(59, 130, 246, 0.02) 100%);
+}
+
+/* Responsive Grid Enhancements */
+.grid-login {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.grid-main {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.grid-feature {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.grid-settings {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+/* Screenshot Grid Animation */
+.screenshot-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .screenshot-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .screenshot-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+
+/* Lightbox Enhancements */
+.lightbox-backdrop {
+  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.lightbox-image {
+  max-height: 85vh;
+  object-fit: contain;
+}
+
