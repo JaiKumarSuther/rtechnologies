@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import LoadingScreen from '@/components/animations/LoadingScreen';
+import LoadingScreen3DAdvanced from '@/components/animations/LoadingScreen3DAdvanced';
 import MouseFollower from '@/components/animations/MouseFollower';
 import FloatingParticles from '@/components/animations/FloatingParticles';
 import Header from '@/components/layout/Header';
@@ -20,6 +20,7 @@ const Index = () => {
     minimumTimeElapsed: false
   });
   const [isVisible, setIsVisible] = useState(false);
+  const [loadingScreenComplete, setLoadingScreenComplete] = useState(false);
   const loadingTimeoutRef = useRef<NodeJS.Timeout>();
 
   useEffect(() => {
@@ -32,13 +33,13 @@ const Index = () => {
       '/src/assets/rtech-logo.png'
     ];
 
-    // Set minimum loading time (1.5s for better UX)
+    // Set minimum loading time (3s for better UX)
     loadingTimeoutRef.current = setTimeout(() => {
       setLoadingState(prev => ({
         ...prev,
         minimumTimeElapsed: true
       }));
-    }, 1500);
+    }, 3000);
 
     // Load all assets
     Promise.all(
@@ -65,22 +66,31 @@ const Index = () => {
   }, []);
 
   useEffect(() => {
-    // Only complete loading when both conditions are met
-    if (loadingState.assetsLoaded && loadingState.minimumTimeElapsed) {
-      setLoadingState(prev => ({ ...prev, isLoading: false }));
+    // Only complete loading when both conditions are met AND loading screen is complete
+    if (loadingState.assetsLoaded && loadingState.minimumTimeElapsed && loadingScreenComplete) {
+      // Start showing main content with a slight delay for smoother overlap
+      setTimeout(() => {
+        setIsVisible(true);
+      }, 200);
+      
+      // Hide loading screen after main content starts appearing
+      setTimeout(() => {
+        setLoadingState(prev => ({ ...prev, isLoading: false }));
+      }, 800); // Longer delay to allow for smooth overlap
     }
-  }, [loadingState.assetsLoaded, loadingState.minimumTimeElapsed]);
+  }, [loadingState.assetsLoaded, loadingState.minimumTimeElapsed, loadingScreenComplete]);
 
   const handleLoadingComplete = () => {
-    setIsVisible(true);
-    // Enable scrolling after load complete
-    document.body.style.overflow = 'auto';
+    setLoadingScreenComplete(true);
   };
 
   // Disable scrolling during loading
   useEffect(() => {
     if (loadingState.isLoading) {
       document.body.style.overflow = 'hidden';
+    } else {
+      // Enable scrolling after load complete
+      document.body.style.overflow = 'auto';
     }
   }, [loadingState.isLoading]);
 
@@ -88,7 +98,10 @@ const Index = () => {
     <>
       <AnimatePresence mode='wait'>
         {loadingState.isLoading && (
-          <LoadingScreen onComplete={handleLoadingComplete} />
+          <LoadingScreen3DAdvanced 
+            onComplete={handleLoadingComplete} 
+            duration={Math.max(3000, loadingState.assetsLoaded ? 1000 : 3000)} 
+          />
         )}
       </AnimatePresence>
 
@@ -97,7 +110,7 @@ const Index = () => {
         initial={{ opacity: 0 }}
         animate={{ 
           opacity: isVisible ? 1 : 0,
-          transition: { duration: 0.8, ease: "easeInOut" }
+          transition: { duration: 1.5, ease: "easeInOut" }
         }}
         style={{
           visibility: isVisible ? 'visible' : 'hidden',
