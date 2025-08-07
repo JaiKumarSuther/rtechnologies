@@ -198,10 +198,10 @@ const Input3D = React.forwardRef<HTMLInputElement, Input3DProps>(
           ref={containerRef}
           className={cn(
             "relative transform-gpu transition-all duration-300 ease-out",
-            "bg-white dark:bg-gray-800 rounded-lg border-2 border-gray-200 dark:border-gray-600",
+            "bg-card/90 rounded-lg border-2 border-border",
             "overflow-visible w-full",
             disabled ? "opacity-70 cursor-not-allowed" : "cursor-text",
-            isHovered && !disabled ? "border-gray-300 dark:border-gray-500" : "",
+            isHovered && !disabled ? "border-primary/50" : "",
             className
           )}
           style={{
@@ -226,11 +226,11 @@ const Input3D = React.forwardRef<HTMLInputElement, Input3DProps>(
               <label
                 className={cn(
                   "absolute left-4 transition-all duration-300 pointer-events-none z-20",
-                  "text-gray-500 dark:text-gray-400",
+                  "text-muted-foreground",
                   (isFocused || hasValue) 
-                    ? "text-xs -top-2 bg-white dark:bg-gray-800 px-2 text-blue-600 dark:text-blue-400 rounded-sm shadow-sm" 
+                    ? "text-xs -top-2 bg-card/95 px-2 text-primary rounded-sm shadow-sm" 
                     : "text-sm top-4",
-                  disabled ? "text-gray-400 dark:text-gray-500" : ""
+                  disabled ? "text-muted-foreground/50" : ""
                 )}
                 style={{
                   maxWidth: 'calc(100% - 2rem)',
@@ -257,7 +257,7 @@ const Input3D = React.forwardRef<HTMLInputElement, Input3DProps>(
               disabled={disabled}
               className={cn(
                 "w-full bg-transparent outline-none transition-all duration-300",
-                "text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400",
+                "text-foreground placeholder-muted-foreground",
                 floatingLabel && label ? "pt-6" : "pt-2",
                 "focus:placeholder-transparent",
                 disabled ? "cursor-not-allowed" : "",

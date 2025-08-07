@@ -11,7 +11,7 @@ import AboutSection from '@/components/sections/AboutSection';
 import ContactSection from '@/components/sections/ContactSection';
 import VideoComponent from '@/components/sections/VideoComponent';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
-import TeamMembers from '@/components/sections/TeamMembers';
+
 
 const Index = () => {
   const [loadingState, setLoadingState] = useState({
@@ -33,13 +33,13 @@ const Index = () => {
       '/src/assets/rtech-logo.png'
     ];
 
-    // Set minimum loading time (3s for better UX)
+    // Set minimum loading time (1.5s for faster UX)
     loadingTimeoutRef.current = setTimeout(() => {
       setLoadingState(prev => ({
         ...prev,
         minimumTimeElapsed: true
       }));
-    }, 3000);
+    }, 1500);
 
     // Load all assets
     Promise.all(
@@ -76,7 +76,7 @@ const Index = () => {
       // Hide loading screen after main content starts appearing
       setTimeout(() => {
         setLoadingState(prev => ({ ...prev, isLoading: false }));
-      }, 800); // Longer delay to allow for smooth overlap
+      }, 400); // Shorter delay for faster transition
     }
   }, [loadingState.assetsLoaded, loadingState.minimumTimeElapsed, loadingScreenComplete]);
 
@@ -100,7 +100,7 @@ const Index = () => {
         {loadingState.isLoading && (
           <LoadingScreen3DAdvanced 
             onComplete={handleLoadingComplete} 
-            duration={Math.max(3000, loadingState.assetsLoaded ? 1000 : 3000)} 
+            duration={Math.max(1500, loadingState.assetsLoaded ? 800 : 1500)} 
           />
         )}
       </AnimatePresence>
@@ -110,7 +110,7 @@ const Index = () => {
         initial={{ opacity: 0 }}
         animate={{ 
           opacity: isVisible ? 1 : 0,
-          transition: { duration: 1.5, ease: "easeInOut" }
+          transition: { duration: 0.8, ease: "easeInOut" }
         }}
         style={{
           visibility: isVisible ? 'visible' : 'hidden',
@@ -129,7 +129,6 @@ const Index = () => {
           <HeroSection />
           <VideoComponent />
           <ServicesSection />
-          <TeamMembers />
           <TestimonialsSection />
           <AboutSection />
           <ContactSection />

@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { 
   Users, 
   Trophy, 
@@ -16,6 +17,7 @@ import GlassCard from '@/components/ui/GlassCard';
 import ScrollAnimation from '@/components/animations/ScrollAnimations';
 
 const AboutSection = () => {
+  const navigate = useNavigate();
   const stats = [
     { number: "150+", label: "Projects Delivered", icon: Trophy },
     { number: "50+", label: "Happy Clients", icon: Users },
@@ -92,6 +94,19 @@ const AboutSection = () => {
           <h2 className="text-4xl md:text-6xl font-bold mb-6 text-gradient">
             We Don't Just Build Software.<br />We Build What's Next.
           </h2>
+          
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed mb-8">
+            At R Technologies, we believe in creating a collaborative and dynamic environment where innovation thrives. Founded by seasoned professionals, we foster a culture of continuous learning, creativity, and teamwork.
+          </p>
+          
+          <motion.button
+            onClick={() => navigate('/about')}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-primary/20 border border-primary/30 rounded-full text-primary hover:bg-primary/30 transition-all duration-300"
+            whileHover={{ scale: 1.05 }}
+          >
+            Learn More About Us
+            <span>→</span>
+          </motion.button>
         </ScrollAnimation>
 
         {/* Main Content Grid */}

@@ -9,12 +9,12 @@ const button3DVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-gradient-to-br from-blue-600 to-purple-600 text-white shadow-lg hover:shadow-xl",
-        destructive: "bg-gradient-to-br from-red-600 to-pink-600 text-white shadow-lg hover:shadow-xl",
-        outline: "border-2 border-gray-300 bg-white text-gray-700 shadow-lg hover:shadow-xl dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200",
-        secondary: "bg-gradient-to-br from-gray-600 to-gray-700 text-white shadow-lg hover:shadow-xl",
-        ghost: "bg-transparent text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800",
-        link: "text-blue-600 underline-offset-4 hover:underline bg-transparent shadow-none",
+        default: "bg-gradient-to-br from-primary to-accent text-primary-foreground shadow-lg hover:shadow-xl",
+        destructive: "bg-gradient-to-br from-destructive to-red-500 text-destructive-foreground shadow-lg hover:shadow-xl",
+        outline: "border-2 border-border bg-card text-card-foreground shadow-lg hover:shadow-xl",
+        secondary: "bg-gradient-to-br from-secondary to-secondary/80 text-secondary-foreground shadow-lg hover:shadow-xl",
+        ghost: "bg-transparent text-foreground hover:bg-muted",
+        link: "text-primary underline-offset-4 hover:underline bg-transparent shadow-none",
       },
       size: {
         default: "h-12 px-6 py-3",

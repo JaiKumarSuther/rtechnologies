@@ -168,7 +168,7 @@ const Select3D = React.forwardRef<HTMLSelectElement, Select3DProps>(
           ref={containerRef}
           className={cn(
             "relative transform-gpu transition-all duration-300 ease-out",
-            "bg-white dark:bg-gray-800 rounded-lg border-2 border-gray-200 dark:border-gray-600",
+            "bg-card/90 rounded-lg border-2 border-border",
             "overflow-visible",
             className
           )}
@@ -194,9 +194,9 @@ const Select3D = React.forwardRef<HTMLSelectElement, Select3DProps>(
               <label
                 className={cn(
                   "absolute left-4 transition-all duration-300 pointer-events-none z-20",
-                  "text-gray-500 dark:text-gray-400",
+                  "text-muted-foreground",
                   (isFocused || hasValue) 
-                    ? "text-xs -top-2 bg-white dark:bg-gray-800 px-2 text-blue-600 dark:text-blue-400 rounded-sm shadow-sm" 
+                    ? "text-xs -top-2 bg-card/95 px-2 text-primary rounded-sm shadow-sm" 
                     : "text-sm top-4"
                 )}
                 style={{
@@ -222,7 +222,7 @@ const Select3D = React.forwardRef<HTMLSelectElement, Select3DProps>(
               }}
               className={cn(
                 "w-full bg-transparent outline-none transition-all duration-300 appearance-none",
-                "text-gray-900 dark:text-gray-100",
+                "text-foreground",
                 floatingLabel && label ? "pt-6" : "pt-2",
                 "min-h-[20px] cursor-pointer",
                 "z-30" // Ensure select is above other elements
@@ -251,9 +251,9 @@ const Select3D = React.forwardRef<HTMLSelectElement, Select3DProps>(
             {/* Custom Dropdown Arrow - moved behind the select */}
             <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none z-20">
               {isDropdownOpen ? (
-                <ChevronUp size={20} className="text-gray-500 dark:text-gray-400" />
+                <ChevronUp size={20} className="text-muted-foreground" />
               ) : (
-                <ChevronDown size={20} className="text-gray-500 dark:text-gray-400" />
+                                  <ChevronDown size={20} className="text-muted-foreground" />
               )}
             </div>
           </div>

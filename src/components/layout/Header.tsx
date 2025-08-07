@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";  // Removed unused icons like Terminal and Code for brevity
+import { useNavigate, useLocation } from "react-router-dom";
 import rtechLogo from "@/assets/rtech-logo.png";
 import AnimatedButton from "@/components/ui/AnimatedButton";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,18 +20,20 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { name: "Home", href: "#home" },
-    { name: "Services", href: "#services" },
-    { name: "About", href: "#about" },
-    { name: "Team", href: "#team" },  // Added Team
-    { name: "Testimonials", href: "#testimonials" },  // Added Testimonials
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "About Us", href: "/about" },
+    { name: "Services", href: "/services" },
+    { name: "Portfolio", href: "/portfolio" },
   ];
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    if (href.startsWith('/')) {
+      navigate(href);
+    } else {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
     setIsOpen(false);
   };
@@ -89,9 +94,9 @@ const Header = () => {
             <AnimatedButton
               variant="primary"
               size="sm"
-              onClick={() => scrollToSection("#contact")}
+              onClick={() => navigate("/contact")}
             >
-              Get Started
+              Let's Chat
             </AnimatedButton>
           </div>
 
@@ -141,10 +146,10 @@ const Header = () => {
                   <AnimatedButton
                     variant="primary"
                     size="sm"
-                    onClick={() => scrollToSection("#contact")}
+                    onClick={() => navigate("/contact")}
                     className="w-full"
                   >
-                    Get Started
+                    Let's Chat
                   </AnimatedButton>
                 </div>
               </div>

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import {
   Mail,
   Phone,
@@ -21,6 +22,7 @@ import { Button3D } from "@/components/ui/Button3D";
 import React from "react";
 
 const ContactSection = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -157,7 +159,7 @@ const ContactSection = () => {
                 Get In Touch
               </motion.h2>
               <motion.p
-                className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4"
+                className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4 mb-6"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
@@ -165,6 +167,18 @@ const ContactSection = () => {
                 Ready to bring your ideas to life? Let's discuss your project and 
                 explore how we can help you achieve your goals.
               </motion.p>
+              
+              <motion.button
+                onClick={() => navigate('/contact')}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-primary/20 border border-primary/30 rounded-full text-primary hover:bg-primary/30 transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+              >
+                Get in Touch
+                <span>→</span>
+              </motion.button>
             </div>
           </ScrollAnimation>
 

@@ -111,7 +111,7 @@ const Card3D = React.forwardRef<HTMLDivElement, Card3DProps>(
         ref={cardRef}
         className={cn(
           "relative transform-gpu transition-all duration-300 ease-out",
-          "bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700",
+                      "bg-card/90 rounded-xl border border-border",
           "cursor-pointer overflow-hidden",
           className
         )}

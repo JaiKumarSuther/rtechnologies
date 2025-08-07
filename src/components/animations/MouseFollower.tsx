@@ -15,7 +15,7 @@ const MouseFollower = () => {
     // Create cursor dots
     const createDots = () => {
       const dots: CursorDot[] = [];
-      for (let i = 0; i < 15; i++) {
+      for (let i = 0; i < 10; i++) { // Reduced from 15 to 10 for better performance
         const dot = document.createElement('div');
         dot.className = 'cursor-dot';
         dot.style.opacity = `${(15 - i) / 15}`;

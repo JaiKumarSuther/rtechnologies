@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { 
   Code, 
   Smartphone, 
@@ -14,6 +15,7 @@ import ScrollAnimation from '@/components/animations/ScrollAnimations';
 import { Button3D } from '@/components/ui/Button3D';
 
 const ServicesSection = () => {
+  const navigate = useNavigate();
   const services = [
     {
       icon: Code,
@@ -88,7 +90,7 @@ const ServicesSection = () => {
             Smart Tech. Sharp Growth.
           </h2>
           
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             We craft digital experiences that go beyond the ordinary. Every service is engineered for results, powered by code, and designed for impact.
           </p>
         </ScrollAnimation>
@@ -102,7 +104,7 @@ const ServicesSection = () => {
               delay={service.delay}
             >
               <Card3D 
-                className="h-full p-6 group bg-gray-900/50 backdrop-blur-sm border border-gray-800/50"
+                className="h-full p-6 group bg-card/90 backdrop-blur-sm border border-border/50"
                 intensity={25}
                 scaleOnHover={true}
                 shadowIntensity={0.4}
@@ -145,7 +147,7 @@ const ServicesSection = () => {
                     {service.subtitle}
                   </p>
                   
-                  <p className="text-gray-300 leading-relaxed mb-6">
+                  <p className="text-muted-foreground leading-relaxed mb-6">
                     {service.description}
                   </p>
 
@@ -173,7 +175,7 @@ const ServicesSection = () => {
               <Button3D 
                 variant="default" 
                 size="lg"
-                onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => navigate('/contact')}
                 intensity={20}
               >
                 Start Your Project
@@ -181,7 +183,7 @@ const ServicesSection = () => {
               </Button3D>
             </motion.div>
             
-            <p className="text-sm text-gray-400 mt-4">
+            <p className="text-sm text-muted-foreground mt-4">
               Free consultation • Custom solutions • Award-winning results
             </p>
           </div>

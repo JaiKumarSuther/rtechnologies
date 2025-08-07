@@ -42,7 +42,7 @@ const FloatingParticles = () => {
     // Initialize particles
     const initParticles = () => {
       particlesRef.current = [];
-      for (let i = 0; i < 80; i++) {
+      for (let i = 0; i < 50; i++) { // Reduced from 80 to 50 for better performance
         particlesRef.current.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
