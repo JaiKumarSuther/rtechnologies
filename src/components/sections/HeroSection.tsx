@@ -72,148 +72,114 @@ const HeroSection = () => {
         />
         <div className="absolute inset-0 bg-background/95 backdrop-blur-sm" />
         <div className="absolute inset-0 bg-matrix-gradient opacity-90" />
-        <CodeMatrix />
+        <CodeMatrix containerRef={heroRef} />
       </div>
 
-      {/* Floating Coding Icons - Responsive Sizes */}
-      <div className="absolute inset-0 z-10 overflow-hidden">
+      {/* Floating Coding Icons - Enhanced Responsive Positioning */}
+      <div className="absolute inset-0 z-10 overflow-hidden pointer-events-none">
         <motion.div
-          className="floating-icon absolute top-1/4 left-[10%] md:left-1/4"
+          className="floating-icon absolute top-[15%] left-[8%] sm:left-[12%] md:left-[15%] lg:left-[20%]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.8 }}
           transition={{ delay: 1, duration: 1 }}
         >
-          <Terminal className="w-6 h-6 md:w-10 md:h-10 text-primary shadow-glow" />
+          <Terminal className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 text-primary shadow-glow" />
         </motion.div>
         <motion.div
-          className="floating-icon absolute top-1/3 right-[10%] md:right-1/4"
+          className="floating-icon absolute top-[25%] right-[8%] sm:right-[12%] md:right-[15%] lg:right-[20%]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.8 }}
           transition={{ delay: 1.5, duration: 1 }}
         >
-          <Code className="w-5 h-5 md:w-9 md:h-9 text-accent shadow-glow-accent" />
+          <Code className="w-4 h-4 sm:w-5 sm:h-5 md:w-7 md:h-7 lg:w-9 lg:h-9 text-accent shadow-glow-accent" />
         </motion.div>
         <motion.div
-          className="floating-icon absolute bottom-1/3 left-[5%] md:left-1/6"
+          className="floating-icon absolute bottom-[30%] left-[5%] sm:left-[8%] md:left-[10%] lg:left-[12%]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.8 }}
           transition={{ delay: 2, duration: 1 }}
         >
-          <Cpu className="w-4 h-4 md:w-7 md:h-7 text-primary-glow shadow-glow" />
+          <Cpu className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-primary-glow shadow-glow" />
         </motion.div>
         <motion.div
-          className="floating-icon absolute top-1/2 right-[5%] md:right-1/6"
+          className="floating-icon absolute top-[45%] right-[5%] sm:right-[8%] md:right-[10%] lg:right-[12%]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.8 }}
           transition={{ delay: 2.5, duration: 1 }}
         >
-          <Database className="w-4 h-4 md:w-7 md:h-7 text-primary shadow-glow" />
+          <Database className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-primary shadow-glow" />
         </motion.div>
         <motion.div
-          className="floating-icon absolute bottom-1/4 right-1/4 md:right-1/3"
+          className="floating-icon absolute bottom-[20%] right-[15%] sm:right-[20%] md:right-[25%] lg:right-[30%]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.8 }}
           transition={{ delay: 3, duration: 1 }}
         >
-          <Rocket className="w-5 h-5 md:w-8 md:h-8 text-accent shadow-glow-accent" />
+          <Rocket className="w-4 h-4 sm:w-5 sm:h-5 md:w-7 md:h-7 lg:w-8 lg:h-8 text-accent shadow-glow-accent" />
         </motion.div>
       </div>
 
-      {/* Main Content */}
-      <div ref={heroRef} className="relative z-20 text-center px-4 sm:px-6 max-w-6xl mx-auto w-full">
-        <ScrollAnimation direction="scale" delay={0.2}>
-          <div ref={textRef} className="pt-20">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 leading-tight ">
-              {words.map((word, index) => (
-                <span 
-                  key={index} 
-                  className="word inline-block mr-2 sm:mr-3 md:mr-4 opacity-0 translate-y-10 text-white"
-                  style={{
-                    transition: `opacity 0.5s ease, transform 0.5s ease`,
-                    transitionDelay: `${index * 0.1}s`
-                  }}
-                >
-                {/* <span 
-                  key={index} 
-                  className="word inline-block mr-2 sm:mr-3 md:mr-4 opacity-0 translate-y-10 text-gradient text-shadow-glow"
-                  style={{
-                    transition: `opacity 0.5s ease, transform 0.5s ease`,
-                    transitionDelay: `${index * 0.1}s`
-                  }}
-                > */}
-                  {word}
+      {/* Main Content - Enhanced Alignment */}
+      <div ref={heroRef} className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-28">
+        <div className="flex flex-col items-center justify-center min-h-[calc(100vh-5rem)] sm:min-h-[calc(100vh-6rem)] lg:min-h-[calc(100vh-7rem)] text-center">
+          {/* Hero Title */}
+          <ScrollAnimation direction="scale" delay={0.2}>
+            <div ref={textRef} className="mb-8 sm:mb-12 lg:mb-16">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight tracking-tight">
+                {words.map((word, index) => (
+                  <span 
+                    key={index} 
+                    className="word inline-block mr-2 sm:mr-3 md:mr-4 lg:mr-6 opacity-0 translate-y-10 text-white"
+                    style={{
+                      transition: `opacity 0.5s ease, transform 0.5s ease`,
+                      transitionDelay: `${index * 0.1}s`
+                    }}
+                  >
+                    {word}
+                  </span>
+                ))}
+              </h1>
+            </div>
+          </ScrollAnimation>
+
+          {/* Hero Description */}
+          <ScrollAnimation direction="up" delay={0.8}>
+            <div className="mb-8 sm:mb-12 lg:mb-16 max-w-4xl lg:max-w-5xl mx-auto">
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white leading-relaxed sm:leading-loose">
+                Custom software, websites, and digital products that don't just look good—they perform.
+                <br className="hidden sm:block" />
+                <span className="inline-block mt-2 sm:mt-3 text-white font-semibold">
+                  At R TECHNOLOGIES, we turn your business ideas into scalable, user-friendly tech that drives real growth.
                 </span>
-              ))}
-            </h1>
-          </div>
-        </ScrollAnimation>
+              </p>
+            </div>
+          </ScrollAnimation>
 
-        <ScrollAnimation direction="up" delay={0.8}>
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white mb-6 md:mb-8 max-w-3xl lg:max-w-4xl mx-auto leading-relaxed px-4">
-            Custom software, websites, and digital products that don't just look good—they perform.
-            <br className="hidden sm:block" />
-            <span className="inline-block mt-2 text-white font-semibold">
-              At R TECHNOLOGIES, we turn your business ideas into scalable, user-friendly tech that drives real growth.
-            </span>
-          </p>
-          {/* <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground mb-6 md:mb-8 max-w-3xl lg:max-w-4xl mx-auto leading-relaxed px-4">
-            Custom software, websites, and digital products that don't just look good—they perform.
-            <br className="hidden sm:block" />
-            <span className="inline-block mt-2 text-gradient font-semibold">
-              At R TECHNOLOGIES, we turn your business ideas into scalable, user-friendly tech that drives real growth.
-            </span>
-          </p> */}
-        </ScrollAnimation>
-
-        <ScrollAnimation direction="up" delay={1.2}>
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12 md:mb-16">
-            <Button3D 
-              variant="default" 
-              size="lg"
-              onClick={() => scrollToNextSection()}
-              className="w-full sm:w-auto"
-              intensity={20}
-            >
-              <span className="mr-2">Explore Our Services</span>
-              <Rocket className="w-4 h-4 md:w-5 md:h-5" />
-            </Button3D>
-            <Button3D 
-              variant="outline" 
-              size="lg"
-              onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="w-full sm:w-auto"
-              intensity={20}
-            >
-              Get Free Consultation
-            </Button3D>
-          </div>
-        </ScrollAnimation>
-
-        {/* Scroll Indicator */}
-        {/* <motion.div
-          className="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 cursor-pointer hover-target hidden sm:block"
-          onClick={scrollToNextSection}
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          whileHover={{ scale: 1.2 }}
-        >
-          <div className="flex flex-col items-center text-muted-foreground">
-            <span className="text-xs sm:text-sm mb-1 sm:mb-2 font-medium">Scroll Down</span>
-            <motion.div
-              animate={{ 
-                boxShadow: [
-                  "0 0 10px hsl(var(--primary) / 0.3)",
-                  "0 0 20px hsl(var(--primary) / 0.6)",
-                  "0 0 10px hsl(var(--primary) / 0.3)"
-                ]
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="p-1 sm:p-2 rounded-full border border-border/50"
-            >
-              <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-primary" />
-            </motion.div>
-          </div>
-        </motion.div> */}
+          {/* Call-to-Action Buttons */}
+          <ScrollAnimation direction="up" delay={1.2}>
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8 justify-center items-center w-full max-w-2xl mx-auto mb-8 sm:mb-12 lg:mb-16">
+              <Button3D 
+                variant="default" 
+                size="lg"
+                onClick={() => scrollToNextSection()}
+                className="w-full sm:w-auto min-w-[200px] sm:min-w-[220px]"
+                intensity={20}
+              >
+                <span className="mr-2">Explore Our Services</span>
+                <Rocket className="w-4 h-4 md:w-5 md:h-5" />
+              </Button3D>
+              <Button3D 
+                variant="outline" 
+                size="lg"
+                onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+                className="w-full sm:w-auto min-w-[200px] sm:min-w-[220px]"
+                intensity={20}
+              >
+                Get Free Consultation
+              </Button3D>
+            </div>
+          </ScrollAnimation>
+        </div>
       </div>
 
       {/* Animated Background Shapes */}

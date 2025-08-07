@@ -1,6 +1,10 @@
 import { useEffect, useRef } from 'react';
 
-const CodeMatrix = () => {
+interface CodeMatrixProps {
+  containerRef?: React.RefObject<HTMLElement>;
+}
+
+const CodeMatrix = ({ containerRef }: CodeMatrixProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -11,8 +15,15 @@ const CodeMatrix = () => {
     if (!ctx) return;
 
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      if (containerRef?.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+      } else {
+        // Fallback to window dimensions
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
     };
 
     resizeCanvas();
@@ -55,7 +66,7 @@ const CodeMatrix = () => {
       clearInterval(interval);
       window.removeEventListener('resize', resizeCanvas);
     };
-  }, []);
+  }, [containerRef]);
 
   return (
     <canvas
