@@ -13,9 +13,10 @@ import {
   ChevronDown,
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import GlassCard from "@/components/ui/GlassCard";
+import { Card3D } from "@/components/ui/Card3D";
+import { Input3D } from "@/components/ui/Input3D";
 import ScrollAnimation from "@/components/animations/ScrollAnimations";
-import AnimatedButton from "@/components/ui/AnimatedButton";
+import { Button3D } from "@/components/ui/Button3D";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -175,7 +176,7 @@ const ContactSection = () => {
                     transition={{ delay: index * 0.1 + 0.4 }}
                     viewport={{ once: true }}
                   >
-                    <GlassCard className="text-center group hover:scale-105 transition-transform duration-300">
+                    <Card3D className="text-center p-6 group" intensity={20}>
                       <motion.div
                         className="w-12 h-12 rounded-full bg-brand-gradient mx-auto mb-4 flex items-center justify-center shadow-glow"
                         whileHover={{
@@ -201,7 +202,7 @@ const ContactSection = () => {
                           {info.content}
                         </span>
                       )}
-                    </GlassCard>
+                    </Card3D>
                   </motion.div>
                 ))}
               </div>
@@ -228,63 +229,51 @@ const ContactSection = () => {
 
           {/* Contact Form */}
           <ScrollAnimation direction="right" delay={0.4}>
-            <GlassCard>
+            <Card3D className="p-8" intensity={15}>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label
-                      htmlFor="name"
-                      className="block text-sm font-medium mb-2 text-foreground"
-                    >
-                      Full Name *
-                    </label>
-                    <input
+                    <Input3D
                       type="text"
                       id="name"
                       name="name"
+                      label="Full Name *"
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border/50 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-foreground placeholder-muted-foreground"
                       placeholder="Your full name"
+                      intensity={10}
+                      glowColor="rgba(59, 130, 246, 0.5)"
                     />
                   </div>
                   <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium mb-2 text-foreground"
-                    >
-                      Email Address *
-                    </label>
-                    <input
+                    <Input3D
                       type="email"
                       id="email"
                       name="email"
+                      label="Email Address *"
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border/50 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-foreground placeholder-muted-foreground"
                       placeholder="your@email.com"
+                      intensity={10}
+                      glowColor="rgba(59, 130, 246, 0.5)"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label
-                      htmlFor="company"
-                      className="block text-sm font-medium mb-2 text-foreground"
-                    >
-                      Company
-                    </label>
-                    <input
+                    <Input3D
                       type="text"
                       id="company"
                       name="company"
+                      label="Company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border/50 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-foreground placeholder-muted-foreground"
                       placeholder="Your company name"
+                      intensity={10}
+                      glowColor="rgba(59, 130, 246, 0.5)"
                     />
                   </div>
                   <div className="relative">
@@ -323,29 +312,27 @@ const ContactSection = () => {
                 </div>
 
                 <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium mb-2 text-foreground"
-                  >
-                    Project Details *
-                  </label>
-                  <textarea
+                  <Input3D
+                    type="text"
                     id="message"
                     name="message"
+                    label="Project Details *"
                     required
                     value={formData.message}
                     onChange={handleChange}
-                    rows={5}
-                    className="w-full px-4 py-3 rounded-lg bg-secondary/50 border border-border/50 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 text-foreground placeholder-muted-foreground resize-none"
                     placeholder="Tell us about your project, goals, and timeline..."
+                    intensity={10}
+                    glowColor="rgba(59, 130, 246, 0.5)"
+                    className="h-32"
                   />
                 </div>
 
-                <AnimatedButton
-                  variant="primary"
+                <Button3D
+                  variant="default"
                   size="lg"
                   className="w-full"
                   disabled={isSubmitting}
+                  intensity={20}
                 >
                   {isSubmitting ? (
                     <div className="flex items-center gap-2">
@@ -366,14 +353,14 @@ const ContactSection = () => {
                       <Send size={20} />
                     </div>
                   )}
-                </AnimatedButton>
+                </Button3D>
 
                 <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
                   <CheckCircle size={16} className="text-primary" />
                   <span>We'll respond within 24 hours</span>
                 </div>
               </form>
-            </GlassCard>
+            </Card3D>
           </ScrollAnimation>
         </div>
       </div>

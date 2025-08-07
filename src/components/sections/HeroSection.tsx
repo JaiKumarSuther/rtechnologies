@@ -6,6 +6,8 @@ import AnimatedButton from '@/components/ui/AnimatedButton';
 import ScrollAnimation from '@/components/animations/ScrollAnimations';
 import ImageSlideshow from '@/components/ui/ImageSlideshow';
 import CodeMatrix from '@/components/ui/CodeMatrix';
+import { Button3D } from '@/components/ui/Button3D';
+import FloatingParticles3D from '@/components/animations/FloatingParticles3D';
 
 const HeroSection = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -50,6 +52,16 @@ const HeroSection = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* 3D Floating Particles Background */}
+      <FloatingParticles3D 
+        count={30}
+        colors={['#3B82F6', '#8B5CF6', '#EC4899', '#10B981']}
+        sizeRange={[3, 12]}
+        speedRange={[30, 80]}
+        depthRange={[0, 150]}
+        className="z-0"
+      />
+      
       {/* Background Slideshow with Overlay */}
       <div className="absolute inset-0 z-0">
         <ImageSlideshow 
@@ -155,23 +167,25 @@ const HeroSection = () => {
 
         <ScrollAnimation direction="up" delay={1.2}>
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-12 md:mb-16">
-            <AnimatedButton 
-              variant="primary" 
+            <Button3D 
+              variant="default" 
               size="lg"
               onClick={() => scrollToNextSection()}
               className="w-full sm:w-auto"
+              intensity={20}
             >
               <span className="mr-2">Explore Our Services</span>
               <Rocket className="w-4 h-4 md:w-5 md:h-5" />
-            </AnimatedButton>
-            <AnimatedButton 
+            </Button3D>
+            <Button3D 
               variant="outline" 
               size="lg"
               onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
               className="w-full sm:w-auto"
+              intensity={20}
             >
               Get Free Consultation
-            </AnimatedButton>
+            </Button3D>
           </div>
         </ScrollAnimation>
 

@@ -9,9 +9,9 @@ import {
   ArrowRight,
   Sparkles
 } from 'lucide-react';
-import GlassCard from '@/components/ui/GlassCard';
+import { Card3D } from '@/components/ui/Card3D';
 import ScrollAnimation from '@/components/animations/ScrollAnimations';
-import AnimatedButton from '@/components/ui/AnimatedButton';
+import { Button3D } from '@/components/ui/Button3D';
 
 const ServicesSection = () => {
   const services = [
@@ -101,12 +101,13 @@ const ServicesSection = () => {
               direction="up" 
               delay={service.delay}
             >
-              <GlassCard className="h-full group hover:scale-105 transition-transform duration-500">
-                <motion.div
-                  className="relative"
-                  whileHover={{ y: -5 }}
-                  transition={{ duration: 0.3 }}
-                >
+              <Card3D 
+                className="h-full p-6 group"
+                intensity={25}
+                scaleOnHover={true}
+                shadowIntensity={0.4}
+              >
+                <div className="relative">
                   {/* Icon with Gradient Background */}
                   <div className="relative mb-6">
                     <motion.div
@@ -156,8 +157,8 @@ const ServicesSection = () => {
                     <span>Learn More</span>
                     <ArrowRight size={16} />
                   </motion.div>
-                </motion.div>
-              </GlassCard>
+                </div>
+              </Card3D>
             </ScrollAnimation>
           ))}
         </div>
@@ -169,14 +170,15 @@ const ServicesSection = () => {
               className="inline-flex items-center gap-4 mb-3"
               whileHover={{ scale: 1.05 }}
             >
-              <AnimatedButton 
-                variant="primary" 
+              <Button3D 
+                variant="default" 
                 size="lg"
                 onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+                intensity={20}
               >
                 Start Your Project
                 <ArrowRight size={20} />
-              </AnimatedButton>
+              </Button3D>
             </motion.div>
             
             <p className="text-sm text-muted-foreground mt-4">
