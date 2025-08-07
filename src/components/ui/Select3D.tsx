@@ -1,38 +1,38 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { animate } from 'animejs';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 
-export interface Input3DProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface Select3DProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label?: string;
   intensity?: number;
   floatingLabel?: boolean;
   glowColor?: string;
-  disabled?: boolean;
+  options: { value: string; label: string }[];
+  placeholder?: string;
 }
 
-const Input3D = React.forwardRef<HTMLInputElement, Input3DProps>(
+const Select3D = React.forwardRef<HTMLSelectElement, Select3DProps>(
   ({ 
     className, 
-    type, 
     label,
     intensity = 10,
     floatingLabel = true,
     glowColor = "rgba(59, 130, 246, 0.5)",
-    disabled = false,
-    value,
+    options,
+    placeholder = "Select an option",
     onChange,
     onFocus,
     onBlur,
+    value,
     ...props 
   }, ref) => {
-    const inputRef = useRef<HTMLInputElement>(null);
+    const selectRef = useRef<HTMLSelectElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const [isFocused, setIsFocused] = useState(false);
     const [hasValue, setHasValue] = useState(false);
-    const [isHovered, setIsHovered] = useState(false);
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const animationRef = useRef<any | null>(null);
-    const prefersReducedMotion = typeof window !== 'undefined' ? 
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches : false;
 
     // Update hasValue when value prop changes
     useEffect(() => {
@@ -40,60 +40,11 @@ const Input3D = React.forwardRef<HTMLInputElement, Input3DProps>(
     }, [value]);
 
     useEffect(() => {
-      const input = inputRef.current;
       const container = containerRef.current;
-      if (!input || !container || disabled) return;
-
-      const handleFocus = (e: FocusEvent) => {
-        setIsFocused(true);
-        if (animationRef.current) {
-          animationRef.current.pause();
-        }
-        
-        if (!prefersReducedMotion) {
-          animate(container, {
-            scale: 1.02,
-            rotateX: 0,
-            rotateY: 0,
-            duration: 300,
-            easing: 'easeOutQuad',
-            update: function() {
-              container.style.boxShadow = `
-                0 0 20px ${glowColor},
-                0 8px 25px rgba(0, 0, 0, 0.15)
-              `;
-            }
-          });
-        } else {
-          container.style.boxShadow = `
-            0 0 20px ${glowColor},
-            0 8px 25px rgba(0, 0, 0, 0.15)
-          `;
-        }
-        onFocus?.(e as unknown as React.FocusEvent<HTMLInputElement>);
-      };
-
-      const handleBlur = (e: FocusEvent) => {
-        setIsFocused(false);
-        if (!prefersReducedMotion) {
-          animate(container, {
-            scale: 1,
-            rotateX: 0,
-            rotateY: 0,
-            duration: 300,
-            easing: 'easeOutQuad',
-            update: function() {
-              container.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.1)';
-            }
-          });
-        } else {
-          container.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.1)';
-        }
-        onBlur?.(e as unknown as React.FocusEvent<HTMLInputElement>);
-      };
+      if (!container) return;
 
       const handleMouseMove = (e: MouseEvent) => {
-        if (!isFocused || prefersReducedMotion) return;
+        if (!isFocused) return;
         
         const rect = container.getBoundingClientRect();
         const x = e.clientX - rect.left;
@@ -129,7 +80,7 @@ const Input3D = React.forwardRef<HTMLInputElement, Input3DProps>(
       };
 
       const handleMouseLeave = () => {
-        if (!isFocused || prefersReducedMotion) return;
+        if (!isFocused) return;
         
         if (animationRef.current) {
           animationRef.current.pause();
@@ -150,58 +101,75 @@ const Input3D = React.forwardRef<HTMLInputElement, Input3DProps>(
         });
       };
 
-      const handleInput = (e: Event) => {
-        const target = e.target as HTMLInputElement;
-        setHasValue(target.value.length > 0);
-      };
-
-      const handleMouseEnter = () => {
-        setIsHovered(true);
-      };
-
-      const handleMouseExit = () => {
-        setIsHovered(false);
-      };
-
-      input.addEventListener('focus', handleFocus);
-      input.addEventListener('blur', handleBlur);
-      input.addEventListener('input', handleInput);
       container.addEventListener('mousemove', handleMouseMove);
       container.addEventListener('mouseleave', handleMouseLeave);
-      container.addEventListener('mouseenter', handleMouseEnter);
-      container.addEventListener('mouseleave', handleMouseExit);
 
       return () => {
-        input.removeEventListener('focus', handleFocus);
-        input.removeEventListener('blur', handleBlur);
-        input.removeEventListener('input', handleInput);
         container.removeEventListener('mousemove', handleMouseMove);
         container.removeEventListener('mouseleave', handleMouseLeave);
-        container.removeEventListener('mouseenter', handleMouseEnter);
-        container.removeEventListener('mouseleave', handleMouseExit);
         if (animationRef.current) {
           animationRef.current.pause();
         }
       };
-    }, [isFocused, intensity, glowColor, disabled, prefersReducedMotion, onFocus, onBlur]);
+    }, [isFocused, intensity, glowColor]);
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setHasValue(e.target.value.length > 0);
+    const handleFocus = (e: React.FocusEvent<HTMLSelectElement>) => {
+      setIsFocused(true);
+      setIsDropdownOpen(true);
+      const container = containerRef.current;
+      if (container) {
+        animate(container, {
+          scale: 1.02,
+          rotateX: 0,
+          rotateY: 0,
+          duration: 300,
+          easing: 'easeOutQuad',
+          update: function() {
+            container.style.boxShadow = `
+              0 0 20px ${glowColor},
+              0 8px 25px rgba(0, 0, 0, 0.15)
+            `;
+          }
+        });
+      }
+      onFocus?.(e);
+    };
+
+    const handleBlur = (e: React.FocusEvent<HTMLSelectElement>) => {
+      setIsFocused(false);
+      setIsDropdownOpen(false);
+      const container = containerRef.current;
+      if (container) {
+        animate(container, {
+          scale: 1,
+          rotateX: 0,
+          rotateY: 0,
+          duration: 300,
+          easing: 'easeOutQuad',
+          update: function() {
+            container.style.boxShadow = '0 4px 15px rgba(0, 0, 0, 0.1)';
+          }
+        });
+      }
+      onBlur?.(e);
+    };
+
+    const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+      const target = e.target;
+      setHasValue(target.value.length > 0);
       if (onChange) {
         onChange(e);
       }
     };
 
     return (
-      <div className="relative w-full">
+      <div className="relative">
         <div
           ref={containerRef}
           className={cn(
             "relative transform-gpu transition-all duration-300 ease-out",
             "bg-white dark:bg-gray-800 rounded-lg border-2 border-gray-200 dark:border-gray-600",
-            "overflow-visible w-full",
-            disabled ? "opacity-70 cursor-not-allowed" : "cursor-text",
-            isHovered && !disabled ? "border-gray-300 dark:border-gray-500" : "",
+            "overflow-visible",
             className
           )}
           style={{
@@ -212,7 +180,7 @@ const Input3D = React.forwardRef<HTMLInputElement, Input3DProps>(
           {/* 3D Glow Effect */}
           <div 
             className={cn(
-              "absolute inset-0 rounded-lg opacity-0 transition-opacity duration-300 pointer-events-none",
+              "absolute inset-0 rounded-lg opacity-0 transition-opacity duration-300",
               "bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10"
             )}
             style={{
@@ -220,7 +188,7 @@ const Input3D = React.forwardRef<HTMLInputElement, Input3DProps>(
             }}
           />
           
-          {/* Input Container */}
+          {/* Select Container */}
           <div className="relative z-10 p-4 min-h-[60px] flex flex-col justify-center">
             {floatingLabel && label && (
               <label
@@ -229,8 +197,7 @@ const Input3D = React.forwardRef<HTMLInputElement, Input3DProps>(
                   "text-gray-500 dark:text-gray-400",
                   (isFocused || hasValue) 
                     ? "text-xs -top-2 bg-white dark:bg-gray-800 px-2 text-blue-600 dark:text-blue-400 rounded-sm shadow-sm" 
-                    : "text-sm top-4",
-                  disabled ? "text-gray-400 dark:text-gray-500" : ""
+                    : "text-sm top-4"
                 )}
                 style={{
                   maxWidth: 'calc(100% - 2rem)',
@@ -244,34 +211,51 @@ const Input3D = React.forwardRef<HTMLInputElement, Input3DProps>(
               </label>
             )}
             
-            <input
-              type={type}
+            <select
               ref={(node) => {
+                selectRef.current = node;
                 if (typeof ref === 'function') {
-                  ref(node);
+                  ref(node as any);
                 } else if (ref) {
-                  ref.current = node;
+                  ref.current = node as any;
                 }
-                inputRef.current = node;
               }}
-              disabled={disabled}
               className={cn(
-                "w-full bg-transparent outline-none transition-all duration-300",
-                "text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400",
+                "w-full bg-transparent outline-none transition-all duration-300 appearance-none",
+                "text-gray-900 dark:text-gray-100",
                 floatingLabel && label ? "pt-6" : "pt-2",
-                "focus:placeholder-transparent",
-                disabled ? "cursor-not-allowed" : "",
-                "min-h-[20px] z-30"
+                "min-h-[20px] cursor-pointer",
+                "z-30" // Ensure select is above other elements
               )}
-              value={value}
+              value={value || ""}
               onChange={handleChange}
-              placeholder={!floatingLabel ? label : ""}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+              name={(props as any).name}
               style={{
                 paddingTop: floatingLabel && label ? '1.5rem' : '0.5rem',
                 paddingBottom: '0.5rem'
               }}
               {...props}
-            />
+            >
+              <option value="" disabled>
+                {placeholder}
+              </option>
+              {options.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+            
+            {/* Custom Dropdown Arrow - moved behind the select */}
+            <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none z-20">
+              {isDropdownOpen ? (
+                <ChevronUp size={20} className="text-gray-500 dark:text-gray-400" />
+              ) : (
+                <ChevronDown size={20} className="text-gray-500 dark:text-gray-400" />
+              )}
+            </div>
           </div>
           
           {/* 3D Depth Effect */}
@@ -288,6 +272,6 @@ const Input3D = React.forwardRef<HTMLInputElement, Input3DProps>(
   }
 );
 
-Input3D.displayName = "Input3D";
+Select3D.displayName = "Select3D";
 
-export { Input3D };
+export { Select3D };
