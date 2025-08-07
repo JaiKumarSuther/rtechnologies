@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import {
@@ -8,40 +7,18 @@ import {
   Send,
   CheckCircle,
   Clock,
-  Globe,
   Sparkles,
-  ChevronUp,
-  ChevronDown,
 } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
 import { Card3D } from "@/components/ui/Card3D";
-import { Input3D } from "@/components/ui/Input3D";
-import { Select3D } from "@/components/ui/Select3D";
 import ScrollAnimation from "@/components/animations/ScrollAnimations";
 import { Button3D } from "@/components/ui/Button3D";
-import React from "react";
+import { Text3D } from "@/components/ui/Text3D";
+import Text3DSimple from "@/components/ui/Text3DSimple";
+import Grid3D from "@/components/ui/Grid3D";
+import MorphingShape3D from "@/components/ui/MorphingShape3D";
 
 const ContactSection = () => {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    company: "",
-    service: "",
-    message: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const { toast } = useToast();
-
-  // Debug function to check form state
-  const debugFormState = () => {
-    console.log('Current form data:', formData);
-  };
-
-  // Add useEffect to debug form state changes
-  React.useEffect(() => {
-    debugFormState();
-  }, [formData]);
 
   const contactInfo = [
     {
@@ -70,53 +47,21 @@ const ContactSection = () => {
     },
   ];
 
-  const services = [
-    { value: "web-development", label: "Web Development" },
-    { value: "mobile-app-development", label: "Mobile App Development" },
-    { value: "software-development", label: "Software Development" },
-    { value: "ui-ux-design", label: "UI/UX Design" },
-    { value: "digital-marketing", label: "Digital Marketing" },
-    { value: "ecommerce-solutions", label: "E-Commerce Solutions" },
-  ];
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-
-    toast({
-      title: "Message Sent!",
-      description:
-        "Thank you for your inquiry. We'll get back to you within 24 hours.",
-    });
-
-    setFormData({
-      name: "",
-      email: "",
-      company: "",
-      service: "",
-      message: "",
-    });
-
-    setIsSubmitting(false);
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
-    >
-  ) => {
-    console.log('ContactSection handleChange:', e.target.name, e.target.value);
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
 
   return (
     <section id="contact" className="relative pb-10 overflow-hidden">
+      {/* 3D Grid Background */}
+      <Grid3D 
+        rows={20}
+        cols={20}
+        spacing={80}
+        depth={100}
+        color="#8B5CF6"
+        intensity={15}
+        className="opacity-20"
+      />
+      
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-20">
         <motion.div
@@ -150,14 +95,22 @@ const ContactSection = () => {
           {/* Section Header */}
           <ScrollAnimation direction="up" delay={0.2}>
             <div className="text-center mb-12 sm:mb-16">
-              <motion.h2
-                className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 text-gradient"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-              >
-                Get In Touch
-              </motion.h2>
+              <div className="flex justify-center mb-6 sm:mb-8">
+                <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-4 lg:gap-5">
+                  {["Get", "In", "Touch"].map((word, index) => (
+                    <div key={index} className="relative word-3d">
+                      <Text3DSimple
+                        variant="elegant"
+                        color="#3B82F6"
+                        shadowColor="#1E293B"
+                        className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight leading-tight text-3d-hover"
+                      >
+                        {word}
+                      </Text3DSimple>
+                    </div>
+                  ))}
+                </div>
+              </div>
               <motion.p
                 className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4 mb-6"
                 initial={{ opacity: 0, y: 20 }}
@@ -186,14 +139,21 @@ const ContactSection = () => {
             {/* Contact Information */}
             <ScrollAnimation direction="left" delay={0.3}>
               <div className="space-y-4 sm:space-y-6">
-                <motion.h3
-                  className="text-xl sm:text-2xl lg:text-3xl font-bold text-gradient mb-6 sm:mb-8"
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8 }}
-                >
-                  Let's Connect
-                </motion.h3>
+                <div className="flex items-center gap-4 mb-6 sm:mb-8">
+                  <MorphingShape3D 
+                    size={40}
+                    color="#3B82F6"
+                    className="hidden sm:block"
+                  />
+                  <Text3DSimple
+                    variant="subtle"
+                    color="#3B82F6"
+                    shadowColor="#1E293B"
+                    className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight"
+                  >
+                    Let's Connect
+                  </Text3DSimple>
+                </div>
                 
                 <div className="space-y-3 sm:space-y-4">
                   {contactInfo.map((info, index) => (
@@ -242,123 +202,44 @@ const ContactSection = () => {
               </div>
             </ScrollAnimation>
 
-            {/* Contact Form */}
+            {/* Contact Redirect */}
             <ScrollAnimation direction="right" delay={0.4}>
               <Card3D className="p-4 sm:p-6 lg:p-8" intensity={15}>
-                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-                  {/* Name and Email Row */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                    <div className="min-h-[80px]">
-                      <Input3D
-                        type="text"
-                        id="name"
-                        name="name"
-                        label="Full Name *"
-                        required
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="Your full name"
-                        intensity={10}
-                        glowColor="rgba(59, 130, 246, 0.5)"
-                      />
-                    </div>
-                    <div className="min-h-[80px]">
-                      <Input3D
-                        type="email"
-                        id="email"
-                        name="email"
-                        label="Email Address *"
-                        required
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="your@email.com"
-                        intensity={10}
-                        glowColor="rgba(59, 130, 246, 0.5)"
-                      />
-                    </div>
+                <div className="text-center space-y-6">
+                  <div className="space-y-4">
+                    <h3 className="text-2xl font-bold text-white mb-4">
+                      Ready to Start Your Project?
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      Get in touch with us to discuss your project requirements, 
+                      get a free consultation, and receive a personalized quote.
+                    </p>
                   </div>
-
-                  {/* Company and Service Row */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                    <div className="min-h-[80px]">
-                      <Input3D
-                        type="text"
-                        id="company"
-                        name="company"
-                        label="Company"
-                        value={formData.company}
-                        onChange={handleChange}
-                        placeholder="Your company name"
-                        intensity={10}
-                        glowColor="rgba(59, 130, 246, 0.5)"
-                      />
-                    </div>
-                    <div className="min-h-[80px]">
-                      <Select3D
-                        id="service"
-                        name="service"
-                        label="Service Interested In"
-                        value={formData.service}
-                        onChange={handleChange}
-                        options={services}
-                        placeholder="Select a service"
-                        intensity={10}
-                        glowColor="rgba(59, 130, 246, 0.5)"
-                      />
+                  
+                  <div className="space-y-4">
+                    <Button3D
+                      variant="default"
+                      size="lg"
+                      onClick={() => navigate('/contact')}
+                      intensity={20}
+                      className="w-full group"
+                    >
+                      Contact Us Now
+                      <Send className="ml-2 group-hover:translate-x-1 transition-transform" />
+                    </Button3D>
+                    
+                    <p className="text-sm text-muted-foreground">
+                      Or call us directly: <a href="tel:+923001234567" className="text-primary hover:underline">+92 300 1234567</a>
+                    </p>
+                  </div>
+                  
+                  <div className="pt-4 border-t border-border/50">
+                    <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                      <CheckCircle className="w-4 h-4 text-primary" />
+                      <span>Free consultation available</span>
                     </div>
                   </div>
-
-                  {/* Message Row */}
-                  <div className="min-h-[140px]">
-                    <Input3D
-                      multiline={true}
-                      rows={5}
-                      id="message"
-                      name="message"
-                      label="Project Details *"
-                      required
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Tell us about your project, goals, and timeline..."
-                      intensity={10}
-                      glowColor="rgba(59, 130, 246, 0.5)"
-                      className="min-h-[140px]"
-                    />
-                  </div>
-
-                  <Button3D
-                    variant="default"
-                    size="lg"
-                    className="w-full"
-                    disabled={isSubmitting}
-                    intensity={20}
-                  >
-                    {isSubmitting ? (
-                      <div className="flex items-center gap-2">
-                        <motion.div
-                          className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full"
-                          animate={{ rotate: 360 }}
-                          transition={{
-                            duration: 1,
-                            repeat: Infinity,
-                            ease: "linear",
-                          }}
-                        />
-                        <span>Sending...</span>
-                      </div>
-                    ) : (
-                      <div className="flex items-center gap-2">
-                        <span>Send Message</span>
-                        <Send size={20} />
-                      </div>
-                    )}
-                  </Button3D>
-
-                  <div className="flex items-center justify-center gap-2 text-xs sm:text-sm text-muted-foreground">
-                    <CheckCircle size={16} className="text-primary" />
-                    <span>We'll respond within 24 hours</span>
-                  </div>
-                </form>
+                </div>
               </Card3D>
             </ScrollAnimation>
           </div>

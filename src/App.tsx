@@ -10,6 +10,7 @@ import Portfolio from "./pages/Portfolio";
 import ProjectDetail from "./pages/ProjectDetail";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import MouseFollower3D from "@/components/animations/MouseFollower3D";
 
 const queryClient = new QueryClient();
 
@@ -18,6 +19,12 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <MouseFollower3D 
+        size={24}
+        color="#3B82F6"
+        trailLength={10}
+        intensity={20}
+      />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />

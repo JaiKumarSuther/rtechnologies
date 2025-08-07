@@ -8,6 +8,10 @@ import ImageSlideshow from '@/components/ui/ImageSlideshow';
 import CodeMatrix from '@/components/ui/CodeMatrix';
 import { Button3D } from '@/components/ui/Button3D';
 import FloatingParticles3D from '@/components/animations/FloatingParticles3D';
+import { Text3D } from '@/components/ui/Text3D';
+import Text3DSimple from '@/components/ui/Text3DSimple';
+import Grid3D from '@/components/ui/Grid3D';
+import MorphingShape3D from '@/components/ui/MorphingShape3D';
 
 const HeroSection = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -54,12 +58,23 @@ const HeroSection = () => {
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* 3D Floating Particles Background */}
       <FloatingParticles3D 
-        count={30}
-        colors={['#3B82F6', '#8B5CF6', '#EC4899', '#10B981']}
-        sizeRange={[3, 12]}
-        speedRange={[30, 80]}
-        depthRange={[0, 150]}
+        count={50}
+        colors={['#3B82F6', '#8B5CF6', '#EC4899', '#10B981', '#F59E0B']}
+        sizeRange={[2, 15]}
+        speedRange={[20, 100]}
+        depthRange={[0, 200]}
         className="z-0"
+      />
+      
+      {/* 3D Grid Background */}
+      <Grid3D 
+        rows={25}
+        cols={25}
+        spacing={60}
+        depth={150}
+        color="#3B82F6"
+        intensity={20}
+        className="z-0 opacity-30"
       />
       
       {/* Background Slideshow with Overlay */}
@@ -122,23 +137,23 @@ const HeroSection = () => {
       {/* Main Content - Enhanced Alignment */}
       <div ref={heroRef} className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-24 lg:pt-28">
         <div className="flex flex-col items-center justify-center min-h-[calc(100vh-5rem)] sm:min-h-[calc(100vh-6rem)] lg:min-h-[calc(100vh-7rem)] text-center">
-          {/* Hero Title */}
+          {/* Hero Title with Professional 3D Text */}
           <ScrollAnimation direction="scale" delay={0.2}>
             <div ref={textRef} className="mb-8 sm:mb-12 lg:mb-16">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight tracking-tight">
+              <div className="flex flex-wrap justify-center items-center gap-6 sm:gap-8 lg:gap-10">
                 {words.map((word, index) => (
-                  <span 
-                    key={index} 
-                    className="word inline-block mr-2 sm:mr-3 md:mr-4 lg:mr-6 opacity-0 translate-y-10 text-white"
-                    style={{
-                      transition: `opacity 0.5s ease, transform 0.5s ease`,
-                      transitionDelay: `${index * 0.1}s`
-                    }}
-                  >
-                    {word}
-                  </span>
+                  <div key={index} className="relative word-3d">
+                    <Text3DSimple
+                      variant="premium"
+                      color="#FFFFFF"
+                      shadowColor="#1E293B"
+                      className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-tight text-3d-hover"
+                    >
+                      {word}
+                    </Text3DSimple>
+                  </div>
                 ))}
-              </h1>
+              </div>
             </div>
           </ScrollAnimation>
 
@@ -155,28 +170,42 @@ const HeroSection = () => {
             </div>
           </ScrollAnimation>
 
-          {/* Call-to-Action Buttons */}
+          {/* Call-to-Action Buttons with 3D Shapes */}
           <ScrollAnimation direction="up" delay={1.2}>
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 lg:gap-8 justify-center items-center w-full max-w-2xl mx-auto mb-8 sm:mb-12 lg:mb-16">
-              <Button3D 
-                variant="default" 
-                size="lg"
-                onClick={() => scrollToNextSection()}
-                className="w-full sm:w-auto min-w-[200px] sm:min-w-[220px]"
-                intensity={20}
-              >
-                <span className="mr-2">Explore Our Services</span>
-                <Rocket className="w-4 h-4 md:w-5 md:h-5" />
-              </Button3D>
-              <Button3D 
-                variant="outline" 
-                size="lg"
-                onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="w-full sm:w-auto min-w-[200px] sm:min-w-[220px]"
-                intensity={20}
-              >
-                Get Free Consultation
-              </Button3D>
+              <div className="flex items-center gap-4">
+                <MorphingShape3D 
+                  size={60}
+                  color="#3B82F6"
+                  className="hidden sm:block"
+                />
+                <Button3D 
+                  variant="default" 
+                  size="lg"
+                  onClick={() => scrollToNextSection()}
+                  className="w-full sm:w-auto min-w-[200px] sm:min-w-[220px]"
+                  intensity={25}
+                >
+                  <span className="mr-2">Explore Our Services</span>
+                  <Rocket className="w-4 h-4 md:w-5 md:h-5" />
+                </Button3D>
+              </div>
+              <div className="flex items-center gap-4">
+                <Button3D 
+                  variant="outline" 
+                  size="lg"
+                  onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="w-full sm:w-auto min-w-[200px] sm:min-w-[220px]"
+                  intensity={25}
+                >
+                  Get Free Consultation
+                </Button3D>
+                <MorphingShape3D 
+                  size={60}
+                  color="#10B981"
+                  className="hidden sm:block"
+                />
+              </div>
             </div>
           </ScrollAnimation>
         </div>

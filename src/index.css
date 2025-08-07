@@ -453,3 +453,336 @@ button, a, input, textarea, select, [role="button"], [tabindex] {
   50% { background-position: 100% 50%; }
 }
 
+/* 3D Text Animation */
+@keyframes text-3d-float {
+  0%, 100% { 
+    transform: translateZ(0px) rotateX(0deg) rotateY(0deg); 
+  }
+  25% { 
+    transform: translateZ(10px) rotateX(2deg) rotateY(2deg); 
+  }
+  50% { 
+    transform: translateZ(5px) rotateX(-1deg) rotateY(-1deg); 
+  }
+  75% { 
+    transform: translateZ(15px) rotateX(1deg) rotateY(-2deg); 
+  }
+}
+
+/* 3D Grid Wave Animation */
+@keyframes grid-wave {
+  0%, 100% { 
+    transform: translateZ(0px) scale(1); 
+    opacity: 0.8;
+  }
+  50% { 
+    transform: translateZ(20px) scale(1.1); 
+    opacity: 1;
+  }
+}
+
+/* 3D Morphing Animation */
+@keyframes morph-3d {
+  0%, 100% { 
+    transform: rotateX(0deg) rotateY(0deg) scale(1); 
+  }
+  25% { 
+    transform: rotateX(10deg) rotateY(5deg) scale(1.05); 
+  }
+  50% { 
+    transform: rotateX(0deg) rotateY(10deg) scale(1.1); 
+  }
+  75% { 
+    transform: rotateX(-5deg) rotateY(5deg) scale(1.05); 
+  }
+}
+
+/* 3D Floating Animation for Particles */
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px) translateZ(0px); 
+    opacity: 0.6;
+  }
+  50% { 
+    transform: translateY(-10px) translateZ(10px); 
+    opacity: 1;
+  }
+}
+
+/* 3D Matrix Rain Effect */
+@keyframes matrix-rain {
+  0% { 
+    transform: translateY(-100vh) translateZ(0px); 
+    opacity: 0;
+  }
+  10% { 
+    opacity: 1;
+  }
+  90% { 
+    opacity: 1;
+  }
+  100% { 
+    transform: translateY(100vh) translateZ(100px); 
+    opacity: 0;
+  }
+}
+
+/* 3D Glitch Effect */
+@keyframes glitch-3d {
+  0%, 100% { 
+    transform: translateZ(0px) skew(0deg); 
+  }
+  20% { 
+    transform: translateZ(5px) skew(2deg); 
+  }
+  40% { 
+    transform: translateZ(-3px) skew(-1deg); 
+  }
+  60% { 
+    transform: translateZ(3px) skew(1deg); 
+  }
+  80% { 
+    transform: translateZ(-2px) skew(-0.5deg); 
+  }
+}
+
+/* 3D Breathing Effect */
+@keyframes breathe-3d {
+  0%, 100% { 
+    transform: scale(1) translateZ(0px); 
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+  }
+  50% { 
+    transform: scale(1.05) translateZ(10px); 
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
+  }
+}
+
+/* 3D Orbit Animation */
+@keyframes orbit-3d {
+  0% { 
+    transform: rotateY(0deg) translateZ(50px) rotateX(0deg); 
+  }
+  100% { 
+    transform: rotateY(360deg) translateZ(50px) rotateX(360deg); 
+  }
+}
+
+/* 3D Stagger Animation */
+@keyframes stagger-3d {
+  0% { 
+    transform: translateZ(-50px) scale(0.8); 
+    opacity: 0;
+  }
+  100% { 
+    transform: translateZ(0px) scale(1); 
+    opacity: 1;
+  }
+}
+
+/* 3D Elastic Bounce */
+@keyframes elastic-3d {
+  0% { 
+    transform: scale(0) translateZ(0px); 
+  }
+  50% { 
+    transform: scale(1.2) translateZ(20px); 
+  }
+  100% { 
+    transform: scale(1) translateZ(0px); 
+  }
+}
+
+/* 3D Wave Effect */
+@keyframes wave-3d {
+  0%, 100% { 
+    transform: translateZ(0px) rotateX(0deg); 
+  }
+  25% { 
+    transform: translateZ(10px) rotateX(5deg); 
+  }
+  50% { 
+    transform: translateZ(20px) rotateX(0deg); 
+  }
+  75% { 
+    transform: translateZ(10px) rotateX(-5deg); 
+  }
+}
+
+/* 3D Spiral Animation */
+@keyframes spiral-3d {
+  0% { 
+    transform: rotateZ(0deg) translateZ(0px) scale(1); 
+  }
+  100% { 
+    transform: rotateZ(360deg) translateZ(100px) scale(1.2); 
+  }
+}
+
+/* 3D Shake Effect */
+@keyframes shake-3d {
+  0%, 100% { 
+    transform: translateZ(0px) rotateX(0deg) rotateY(0deg); 
+  }
+  10%, 30%, 50%, 70%, 90% { 
+    transform: translateZ(5px) rotateX(2deg) rotateY(2deg); 
+  }
+  20%, 40%, 60%, 80% { 
+    transform: translateZ(-3px) rotateX(-2deg) rotateY(-2deg); 
+  }
+}
+
+/* 3D Zoom Effect */
+@keyframes zoom-3d {
+  0% { 
+    transform: scale(0.5) translateZ(-50px); 
+    opacity: 0;
+  }
+  100% { 
+    transform: scale(1) translateZ(0px); 
+    opacity: 1;
+  }
+}
+
+/* 3D Slide Effect */
+@keyframes slide-3d {
+  0% { 
+    transform: translateX(-100px) translateZ(-50px) rotateY(45deg); 
+    opacity: 0;
+  }
+  100% { 
+    transform: translateX(0px) translateZ(0px) rotateY(0deg); 
+    opacity: 1;
+  }
+}
+
+/* 3D Flip Effect */
+@keyframes flip-3d {
+  0% { 
+    transform: rotateY(0deg) translateZ(0px); 
+  }
+  50% { 
+    transform: rotateY(90deg) translateZ(50px); 
+  }
+  100% { 
+    transform: rotateY(180deg) translateZ(0px); 
+  }
+}
+
+/* 3D Bounce Effect */
+@keyframes bounce-3d {
+  0%, 20%, 53%, 80%, 100% { 
+    transform: translateZ(0px) scale(1); 
+  }
+  40%, 43% { 
+    transform: translateZ(20px) scale(1.1); 
+  }
+  70% { 
+    transform: translateZ(10px) scale(1.05); 
+  }
+  90% { 
+    transform: translateZ(5px) scale(1.02); 
+  }
+}
+
+/* Professional 3D Text Effects */
+.text-3d-subtle {
+  text-shadow: 
+    0 1px 2px rgba(0,0,0,0.1),
+    0 2px 4px rgba(0,0,0,0.1),
+    0 4px 8px rgba(0,0,0,0.1);
+}
+
+.text-3d-elegant {
+  text-shadow: 
+    0 1px 0 rgba(255,255,255,0.1),
+    0 2px 0 rgba(255,255,255,0.05),
+    0 4px 8px rgba(0,0,0,0.2),
+    0 8px 16px rgba(0,0,0,0.15);
+}
+
+.text-3d-premium {
+  text-shadow: 
+    0 1px 0 rgba(255,255,255,0.15),
+    0 2px 0 rgba(255,255,255,0.1),
+    0 4px 0 rgba(255,255,255,0.05),
+    0 8px 16px rgba(0,0,0,0.25),
+    0 16px 32px rgba(0,0,0,0.2);
+}
+
+/* Professional Typography Enhancements */
+.text-gradient-professional {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-premium {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Professional Hover Effects */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Professional Glow Effects */
+.glow-subtle {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+}
+
+.glow-elegant {
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.15);
+}
+
+.glow-premium {
+  box-shadow: 0 0 40px rgba(59, 130, 246, 0.2);
+}
+
+/* Enhanced 3D Text Hover Effects */
+.text-3d-hover {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.text-3d-hover:hover {
+  transform: translateY(-3px) rotateY(2deg) scale(1.02);
+  filter: brightness(1.1);
+}
+
+/* Individual Word 3D Effects */
+.word-3d {
+  display: inline-block;
+  transform-style: preserve-3d;
+  transition: all 0.3s ease;
+}
+
+.word-3d:hover {
+  transform: translateZ(10px) rotateY(5deg);
+}
+
+/* Professional Color Palette */
+.text-blue-professional {
+  color: #3B82F6;
+}
+
+.text-blue-dark {
+  color: #1E40AF;
+}
+
+.text-green-professional {
+  color: #10B981;
+}
+
+.text-green-dark {
+  color: #059669;
+}
+

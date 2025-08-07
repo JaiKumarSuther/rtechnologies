@@ -25,7 +25,7 @@ const Services = () => {
         "Technology Consulting",
         "Marketing"
       ],
-             image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=800&h=600&fit=crop&auto=format",
+      image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop&auto=format&q=80",
       imagePosition: "left"
     },
     {
@@ -33,7 +33,7 @@ const Services = () => {
       title: "Development",
       description: "We are committed to delivering robust tools for web development, aimed at creating dynamic, high-performing websites that drive engagement and growth. Our focus is on leveraging cutting-edge technology and thoughtful design to build seamless, user-friendly web experiences.",
       features: [],
-             image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=600&fit=crop&auto=format",
+      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=600&fit=crop&auto=format",
       imagePosition: "right"
     },
     {
@@ -41,7 +41,7 @@ const Services = () => {
       title: "UI/UX",
       description: "We are committed to equipping you with the most effective tools for UI/UX design, aimed at refining user interfaces and elevating user experiences. Our focus is on driving product innovation through thoughtful and intuitive design, ensuring that digital interactions are both engaging and seamless.",
       features: [],
-             image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop&auto=format",
+      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop&auto=format",
       imagePosition: "left"
     },
     {
@@ -49,7 +49,7 @@ const Services = () => {
       title: "App Development",
       description: "We are dedicated to providing you with cutting-edge tools for mobile app development, designed to enhance functionality and user satisfaction. Our goal is to drive innovation through intuitive, high-performance apps.",
       features: [],
-             image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop&auto=format",
+      image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop&auto=format",
       imagePosition: "right"
     },
     {
@@ -57,7 +57,7 @@ const Services = () => {
       title: "Graphic Designing",
       description: "We are committed to equipping you with powerful tools for graphic design, aimed at transforming your creative vision into stunning visual experiences. Our focus is on fostering innovation through compelling, eye-catching graphics that captivate and engage audiences.",
       features: [],
-             image: "https://images.unsplash.com/photo-1626785774573-4b799315486d?w=800&h=600&fit=crop&auto=format",
+      image: "https://images.unsplash.com/photo-1639762681057-408e52192e55?w=800&h=600&fit=crop&auto=format&q=80",
       imagePosition: "left"
     },
     {
@@ -65,7 +65,7 @@ const Services = () => {
       title: "Marketing",
       description: "We are dedicated to providing you with advanced tools for marketing, designed to enhance your strategic approach and amplify your brand's reach. We ensure your marketing campaigns are not only impactful but also resonate deeply with your target market.",
       features: [],
-             image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop&auto=format",
+      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=600&fit=crop&auto=format",
       imagePosition: "right"
     }
   ];
@@ -181,16 +181,35 @@ const Services = () => {
                         transition={{ delay: 0.6 }}
                         viewport={{ once: true }}
                       >
-                        <Button3D
-                          variant="outline"
-                          size="md"
-                          onClick={() => navigate('/contact')}
-                          intensity={15}
-                          className="group"
-                        >
-                          Learn More
-                          <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-                        </Button3D>
+                                                 <motion.div
+                           className="relative group"
+                           whileHover={{ scale: 1.02 }}
+                           whileTap={{ scale: 0.98 }}
+                         >
+                           <Button3D
+                             variant="outline"
+                             size="lg"
+                             onClick={() => navigate('/contact')}
+                             intensity={20}
+                             className="group relative overflow-hidden bg-gradient-to-r from-primary/10 to-accent/10 border-primary/30 hover:border-primary/50 transition-all duration-300"
+                           >
+                             <span className="relative z-10 flex items-center gap-2">
+                               Learn More
+                               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                             </span>
+                             
+                             {/* Animated background gradient */}
+                             <motion.div
+                               className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                               initial={{ x: '-100%' }}
+                               whileHover={{ x: '0%' }}
+                               transition={{ duration: 0.3 }}
+                             />
+                             
+                             {/* Glowing effect */}
+                             <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary/30 to-accent/30 blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-300" />
+                           </Button3D>
+                         </motion.div>
                       </motion.div>
                     </div>
                   </motion.div>

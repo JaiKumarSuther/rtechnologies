@@ -14,16 +14,29 @@ import TestimonialsSection from '@/components/sections/TestimonialsSection';
 
 
 const Index = () => {
+  // Check if this is a fresh page load (not navigation)
+  const isFreshLoad = !sessionStorage.getItem('hasLoaded');
+  
   const [loadingState, setLoadingState] = useState({
-    isLoading: true,
+    isLoading: isFreshLoad,
     assetsLoaded: false,
     minimumTimeElapsed: false
   });
-  const [isVisible, setIsVisible] = useState(false);
-  const [loadingScreenComplete, setLoadingScreenComplete] = useState(false);
+  const [isVisible, setIsVisible] = useState(!isFreshLoad);
+  const [loadingScreenComplete, setLoadingScreenComplete] = useState(!isFreshLoad);
   const loadingTimeoutRef = useRef<NodeJS.Timeout>();
 
   useEffect(() => {
+    // Skip loading if not a fresh load
+    if (!isFreshLoad) {
+      setLoadingState(prev => ({
+        ...prev,
+        assetsLoaded: true,
+        minimumTimeElapsed: true
+      }));
+      return;
+    }
+
     // Preload critical assets
     const preloadAssets = [
       '/src/assets/hero-bg.jpg',
@@ -63,11 +76,14 @@ const Index = () => {
         clearTimeout(loadingTimeoutRef.current);
       }
     };
-  }, []);
+  }, [isFreshLoad]);
 
   useEffect(() => {
     // Only complete loading when both conditions are met AND loading screen is complete
     if (loadingState.assetsLoaded && loadingState.minimumTimeElapsed && loadingScreenComplete) {
+      // Mark that the page has been loaded
+      sessionStorage.setItem('hasLoaded', 'true');
+      
       // Start showing main content with a slight delay for smoother overlap
       setTimeout(() => {
         setIsVisible(true);

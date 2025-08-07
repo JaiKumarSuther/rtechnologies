@@ -13,6 +13,10 @@ import {
 import { Card3D } from '@/components/ui/Card3D';
 import ScrollAnimation from '@/components/animations/ScrollAnimations';
 import { Button3D } from '@/components/ui/Button3D';
+import { Text3D } from '@/components/ui/Text3D';
+import Text3DSimple from '@/components/ui/Text3DSimple';
+import Grid3D from '@/components/ui/Grid3D';
+import MorphingShape3D from '@/components/ui/MorphingShape3D';
 
 const ServicesSection = () => {
   const navigate = useNavigate();
@@ -69,6 +73,17 @@ const ServicesSection = () => {
 
   return (
     <section id="services" className="pt-10 relative overflow-hidden">
+      {/* 3D Grid Background */}
+      <Grid3D 
+        rows={30}
+        cols={30}
+        spacing={70}
+        depth={120}
+        color="#3B82F6"
+        intensity={18}
+        className="opacity-25"
+      />
+      
       {/* Background Elements */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-20 left-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-pulse-glow" />
@@ -86,9 +101,22 @@ const ServicesSection = () => {
             <span className="text-sm font-medium text-primary">Our Services</span>
           </motion.div>
           
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-gradient">
-            Smart Tech. Sharp Growth.
-          </h2>
+          <div className="flex justify-center mb-8">
+            <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6">
+              {["Smart", "Tech.", "Sharp", "Growth."].map((word, index) => (
+                <div key={index} className="relative word-3d">
+                  <Text3DSimple
+                    variant="elegant"
+                    color="#3B82F6"
+                    shadowColor="#1E293B"
+                    className="text-4xl md:text-6xl font-bold tracking-tight leading-tight text-3d-hover"
+                  >
+                    {word}
+                  </Text3DSimple>
+                </div>
+              ))}
+            </div>
+          </div>
           
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             We craft digital experiences that go beyond the ordinary. Every service is engineered for results, powered by code, and designed for impact.
@@ -110,18 +138,30 @@ const ServicesSection = () => {
                 shadowIntensity={0.4}
               >
                 <div className="relative">
-                  {/* Icon with Gradient Background */}
+                  {/* Icon with 3D Morphing Shape */}
                   <div className="relative mb-6">
-                    <motion.div
-                      className={`w-16 h-16 rounded-xl bg-gradient-to-br ${service.gradient} p-4 shadow-glow group-hover:shadow-glow-accent transition-all duration-500`}
-                      whileHover={{ 
-                        rotate: [0, -10, 10, 0],
-                        scale: 1.1 
-                      }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <service.icon className="w-full h-full text-white" />
-                    </motion.div>
+                    <div className="flex items-center gap-4">
+                      <MorphingShape3D 
+                        size={64}
+                        color={service.gradient.includes('blue') ? '#3B82F6' : 
+                               service.gradient.includes('purple') ? '#8B5CF6' :
+                               service.gradient.includes('green') ? '#10B981' :
+                               service.gradient.includes('orange') ? '#F59E0B' :
+                               service.gradient.includes('teal') ? '#14B8A6' :
+                               service.gradient.includes('indigo') ? '#6366F1' : '#3B82F6'}
+                        className="hidden sm:block"
+                      />
+                      <motion.div
+                        className={`w-16 h-16 rounded-xl bg-gradient-to-br ${service.gradient} p-4 shadow-glow group-hover:shadow-glow-accent transition-all duration-500`}
+                        whileHover={{ 
+                          rotate: [0, -10, 10, 0],
+                          scale: 1.1 
+                        }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <service.icon className="w-full h-full text-white" />
+                      </motion.div>
+                    </div>
                     
                     {/* Floating particles around icon */}
                     <motion.div
@@ -155,6 +195,7 @@ const ServicesSection = () => {
                   <motion.div
                     className="flex items-center gap-2 text-primary font-medium opacity-90 group-hover:opacity-100 transition-all duration-300 cursor-pointer"
                     whileHover={{ x: 5 }}
+                    onClick={() => navigate('/services')}
                   >
                     <span>Learn More</span>
                     <ArrowRight size={16} />
