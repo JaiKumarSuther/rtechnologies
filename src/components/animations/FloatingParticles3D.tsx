@@ -13,6 +13,7 @@ interface Particle {
   targetY: number;
   targetZ: number;
   animationStartTime: number;
+  symbol: string;
 }
 
 interface FloatingParticles3DProps {
@@ -37,6 +38,13 @@ const FloatingParticles3D: React.FC<FloatingParticles3DProps> = ({
   const animationFrameRef = useRef<number | null>(null);
   const [isVisible, setIsVisible] = useState(false);
 
+  // Coding symbols to display
+  const codingSymbols = [
+    '{', '}', '[', ']', '(', ')', '<', '>', '+', '=', '$', '%', '&', '*', 
+    '|', '^', '~', '!', '@', '#', '?', '/', '\\', ';', ':', '"', "'", '`',
+    '→', '←', '↑', '↓', '∞', '≠', '≤', '≥', '±', '×', '÷', '√', '∑', '∏'
+  ];
+
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
@@ -49,18 +57,22 @@ const FloatingParticles3D: React.FC<FloatingParticles3DProps> = ({
         const particle = document.createElement('div');
         const size = Math.random() * (sizeRange[1] - sizeRange[0]) + sizeRange[0];
         const color = colors[Math.floor(Math.random() * colors.length)];
+        const symbol = codingSymbols[Math.floor(Math.random() * codingSymbols.length)];
         
         particle.className = 'particle-3d';
+        particle.textContent = symbol;
         particle.style.cssText = `
           position: absolute;
-          width: ${size}px;
-          height: ${size}px;
-          background: ${color};
-          border-radius: 50%;
+          font-family: 'Courier New', monospace;
+          font-size: ${size * 2}px;
+          font-weight: bold;
+          color: ${color};
           pointer-events: none;
           opacity: 0;
           transform: translateZ(0);
-          box-shadow: 0 0 ${size * 2}px ${color}40;
+          text-shadow: 0 0 ${size * 3}px ${color}80;
+          user-select: none;
+          white-space: nowrap;
         `;
         
         container.appendChild(particle);
@@ -80,7 +92,8 @@ const FloatingParticles3D: React.FC<FloatingParticles3DProps> = ({
           targetX: x,
           targetY: y,
           targetZ: z,
-          animationStartTime: 0
+          animationStartTime: 0,
+          symbol
         });
       }
       
@@ -94,7 +107,7 @@ const FloatingParticles3D: React.FC<FloatingParticles3DProps> = ({
       const particles = particlesRef.current.map(p => p.element);
       
       animate(particles, {
-        opacity: [0, 0.8],
+        opacity: [0, 0.9],
         scale: [0, 1],
         translateZ: (el, i) => particlesRef.current[i].z,
         duration: 1500,

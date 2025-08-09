@@ -6,7 +6,9 @@ import FloatingParticles from '@/components/animations/FloatingParticles';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import HeroSection from '@/components/sections/HeroSection';
+import CryptoWeb3Section from '@/components/sections/CryptoWeb3Section';
 import ServicesSection from '@/components/sections/ServicesSection';
+import PortfolioSection from '@/components/sections/PortfolioSection';
 import AboutSection from '@/components/sections/AboutSection';
 import ContactSection from '@/components/sections/ContactSection';
 import VideoComponent from '@/components/sections/VideoComponent';
@@ -29,8 +31,9 @@ const Index = () => {
 
   useEffect(() => {
     // Check if this is a fresh page load by looking at performance navigation type
+    const navigationEntry = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
     const isPageRefresh = performance.navigation.type === 1 || 
-                         performance.getEntriesByType('navigation')[0]?.type === 'reload';
+                         navigationEntry?.type === 'reload';
     
     // Also check if we're coming from a different domain or no referrer
     const hasReferrer = document.referrer && 
@@ -155,8 +158,10 @@ const Index = () => {
         {/* Main Content */}
         <main className="relative z-10">
           <HeroSection />
+          <CryptoWeb3Section />
           <VideoComponent />
           <ServicesSection />
+          <PortfolioSection />
           <TestimonialsSection />
           <AboutSection />
           <ContactSection />

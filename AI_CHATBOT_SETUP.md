@@ -6,7 +6,7 @@ This website now includes an interactive AI chatbot that can help visitors with:
 - Pricing and timeline questions
 - Technical consultations
 - Contact information
-- Portfolio showcases
+- Project showcases
 
 ## Features
 - 🤖 **Real AI Integration** - Powered by OpenAI GPT-3.5-turbo

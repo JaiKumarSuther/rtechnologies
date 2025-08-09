@@ -11,6 +11,8 @@ interface Particle {
   targetX: number;
   targetY: number;
   depth: number;
+  symbol: string;
+  color: string;
 }
 
 const FloatingParticles = () => {
@@ -18,6 +20,25 @@ const FloatingParticles = () => {
   const particlesRef = useRef<Particle[]>([]);
   const animationFrameRef = useRef<number>();
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  // Coding symbols to display
+  const codingSymbols = [
+    '{', '}', '[', ']', '(', ')', '<', '>', '+', '=', '$', '%', '&', '*', 
+    '|', '^', '~', '!', '@', '#', '?', '/', '\\', ';', ':', '"', "'", '`',
+    '→', '←', '↑', '↓', '∞', '≠', '≤', '≥', '±', '×', '÷', '√', '∑', '∏'
+  ];
+
+  // Color palette for coding theme
+  const colors = [
+    '#3B82F6', // Blue
+    '#8B5CF6', // Purple
+    '#EC4899', // Pink
+    '#10B981', // Green
+    '#F59E0B', // Orange
+    '#EF4444', // Red
+    '#06B6D4', // Cyan
+    '#84CC16', // Lime
+  ];
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -42,7 +63,7 @@ const FloatingParticles = () => {
     // Initialize particles
     const initParticles = () => {
       particlesRef.current = [];
-      for (let i = 0; i < 50; i++) { // Reduced from 80 to 50 for better performance
+      for (let i = 0; i < 50; i++) {
         particlesRef.current.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
@@ -54,6 +75,8 @@ const FloatingParticles = () => {
           targetX: 0,
           targetY: 0,
           depth: Math.random() * 0.5 + 0.5,
+          symbol: codingSymbols[Math.floor(Math.random() * codingSymbols.length)],
+          color: colors[Math.floor(Math.random() * colors.length)],
         });
       }
     };
@@ -94,29 +117,25 @@ const FloatingParticles = () => {
           particle.x = Math.random() * canvas.width;
           particle.y = Math.random() * canvas.height;
           particle.life = Math.random() * 200 + 100;
+          particle.symbol = codingSymbols[Math.floor(Math.random() * codingSymbols.length)];
+          particle.color = colors[Math.floor(Math.random() * colors.length)];
         }
 
-        // Draw particle with coding-themed gradient
-        const gradient = ctx.createRadialGradient(
-          particle.x, particle.y, 0,
-          particle.x, particle.y, particle.size * 3
-        );
-        gradient.addColorStop(0, `hsla(170, 100%, 50%, ${particle.opacity * particle.depth})`);
-        gradient.addColorStop(0.5, `hsla(150, 100%, 70%, ${particle.opacity * 0.3})`);
-        gradient.addColorStop(1, `hsla(160, 100%, 60%, 0)`);
-
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = gradient;
-        ctx.fill();
-
+        // Draw coding symbol instead of circle
+        const fontSize = particle.size * 8;
+        ctx.font = `${fontSize}px 'Courier New', monospace`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        
         // Add glow effect
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = `hsla(170, 100%, 50%, ${particle.opacity * 0.5})`;
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size * 0.5, 0, Math.PI * 2);
-        ctx.fillStyle = `hsla(170, 100%, 50%, ${particle.opacity * 0.8})`;
-        ctx.fill();
+        ctx.shadowBlur = 15;
+        ctx.shadowColor = particle.color;
+        
+        // Draw the symbol
+        ctx.fillStyle = `${particle.color}${Math.floor(particle.opacity * 255).toString(16).padStart(2, '0')}`;
+        ctx.fillText(particle.symbol, particle.x, particle.y);
+        
+        // Reset shadow
         ctx.shadowBlur = 0;
       });
 

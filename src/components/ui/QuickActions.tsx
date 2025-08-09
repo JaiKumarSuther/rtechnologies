@@ -45,13 +45,7 @@ const quickActions: QuickAction[] = [
     query: 'How can I contact you?',
     color: 'from-red-500 to-pink-600'
   },
-  {
-    id: 'portfolio',
-    label: 'Portfolio',
-    icon: Palette,
-    query: 'Show me your portfolio and projects',
-    color: 'from-purple-500 to-indigo-600'
-  },
+
   {
     id: 'team',
     label: 'Our Team',

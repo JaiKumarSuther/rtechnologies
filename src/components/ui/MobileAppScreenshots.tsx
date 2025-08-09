@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight, Maximize2, Smartphone, Monitor, Tablet } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Maximize2, Smartphone, Monitor, Tablet, Star } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface MobileAppScreenshotsProps {
@@ -191,22 +191,22 @@ const MobileAppScreenshots: React.FC<MobileAppScreenshotsProps> = ({
       // Single images get different sizes based on type
       switch (groupedImage.type) {
         case 'login':
-          return "max-w-[450px]"; // Login screens much larger
+          return "max-w-[280px]"; // Login screens smaller
         case 'main':
-          return "max-w-[500px]"; // Main screens largest
+          return "max-w-[320px]"; // Main screens medium
         case 'feature':
-          return "max-w-[480px]"; // Feature screens large
+          return "max-w-[300px]"; // Feature screens smaller
         default:
-          return "max-w-[480px]";
+          return "max-w-[280px]";
       }
     }
     
     // Grouped images get different sizes based on position
     if (groupedImage.type === 'login') {
-      return imageIndex === 0 ? "max-w-[450px]" : "max-w-[420px]"; // First login screen larger
+      return imageIndex === 0 ? "max-w-[280px]" : "max-w-[260px]"; // First login screen larger
     }
     
-    return "max-w-[480px]";
+    return "max-w-[300px]";
   };
 
   return (
@@ -223,13 +223,13 @@ const MobileAppScreenshots: React.FC<MobileAppScreenshotsProps> = ({
           >
             {/* Enhanced Group Header */}
             {groupedImage.isGroup && groupedImage.images.length > 1 && (
-              <div className="mb-4 text-center">
+              <div className="mb-8 text-center">
                 <motion.div
                   className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary/20 to-primary/10 rounded-full border border-primary/30 shadow-lg"
                   whileHover={{ scale: 1.05 }}
                 >
                   {getGroupIcon(groupedImage)}
-                  <span className="text-base font-semibold text-primary">
+                  <span className="text-lg font-semibold text-primary">
                     {getGroupTitle(groupedImage)}
                   </span>
                 </motion.div>
@@ -238,13 +238,13 @@ const MobileAppScreenshots: React.FC<MobileAppScreenshotsProps> = ({
 
             {/* Single Image Header */}
             {!groupedImage.isGroup && (
-              <div className="mb-4 text-center">
+              <div className="mb-8 text-center">
                 <motion.div
                   className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-gray-600/20 to-gray-600/10 rounded-full border border-gray-600/30"
                   whileHover={{ scale: 1.05 }}
                 >
                   {getGroupIcon(groupedImage)}
-                  <span className="text-base font-medium text-gray-400">
+                  <span className="text-lg font-medium text-gray-400">
                     {groupedImage.type === 'login' ? 'Login Screen' :
                      groupedImage.type === 'main' ? 'Main Screen' :
                      groupedImage.type === 'feature' ? 'Feature Screen' :
@@ -269,18 +269,18 @@ const MobileAppScreenshots: React.FC<MobileAppScreenshotsProps> = ({
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: groupIndex * 0.2 + imageIndex * 0.1 }}
                     whileHover={{ 
-                      scale: 1.02,
+                      scale: 1.03,
                       zIndex: 10,
-                      y: -8
+                      y: -12
                     }}
                     onClick={() => openLightbox(globalIndex)}
                   >
-                    {/* Dynamic Mobile Frame */}
+                    {/* Enhanced Mobile Frame */}
                     <div className={cn("relative w-full", getFrameSize(groupedImage, imageIndex))}>
-                      {/* Phone Frame with enhanced styling */}
-                      <div className="relative bg-gradient-to-br from-gray-800 via-gray-900 to-black rounded-[3rem] p-4 shadow-2xl mobile-frame">
-                        {/* Screen with enhanced effects */}
-                        <div className="relative overflow-hidden rounded-[2.5rem] bg-white">
+                                             {/* Phone Frame with enhanced styling */}
+                       <div className="relative bg-gradient-to-br from-gray-800 via-gray-900 to-black rounded-[3rem] p-4 shadow-2xl mobile-frame">
+                         {/* Screen with enhanced effects */}
+                         <div className="relative overflow-hidden rounded-[2.5rem] bg-white">
                           <img
                             src={image}
                             alt={`${title} screenshot ${globalIndex + 1}`}
@@ -289,7 +289,7 @@ const MobileAppScreenshots: React.FC<MobileAppScreenshotsProps> = ({
                           />
                           
                           {/* Enhanced overlay on hover */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/0 via-transparent to-black/0 group-hover:from-black/30 group-hover:to-black/30 transition-all duration-500 flex items-center justify-center">
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/0 via-transparent to-black/0 group-hover:from-black/40 group-hover:to-black/40 transition-all duration-500 flex items-center justify-center">
                             <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-4 group-hover:translate-y-0">
                               <div className="bg-white/20 backdrop-blur-md rounded-full p-4 border border-white/30 shadow-lg">
                                 <Maximize2 className="w-8 h-8 text-white" />
@@ -299,21 +299,21 @@ const MobileAppScreenshots: React.FC<MobileAppScreenshotsProps> = ({
                         </div>
                         
                         {/* Enhanced Home Indicator */}
-                        <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 w-40 h-1 bg-gradient-to-r from-white/40 via-white/60 to-white/40 rounded-full opacity-80"></div>
+                        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-48 h-1 bg-gradient-to-r from-white/40 via-white/60 to-white/40 rounded-full opacity-80"></div>
                         
                         {/* Side Button */}
-                        <div className="absolute right-2 top-1/2 transform -translate-y-1/2 w-1 h-10 bg-white/30 rounded-full"></div>
+                        <div className="absolute right-4 top-1/2 transform -translate-y-1/2 w-1 h-16 bg-white/30 rounded-full"></div>
                       </div>
                     </div>
                     
                     {/* Enhanced Image Number Badge */}
-                    <div className="absolute -top-4 -right-4 bg-gradient-to-r from-primary to-primary/80 text-white text-sm font-bold rounded-full w-8 h-8 flex items-center justify-center shadow-lg border-2 border-white/20">
+                    <div className="absolute -top-4 -right-4 bg-gradient-to-r from-primary to-primary/80 text-white text-sm font-bold rounded-full w-10 h-10 flex items-center justify-center shadow-lg border-2 border-white/20">
                       {globalIndex + 1}
                     </div>
 
                     {/* Floating Info Card */}
                     <motion.div
-                      className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 bg-black/80 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm opacity-0 group-hover:opacity-100 transition-all duration-300"
+                      className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-black/80 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm opacity-0 group-hover:opacity-100 transition-all duration-300"
                       initial={{ opacity: 0, y: 10 }}
                       whileHover={{ opacity: 1, y: 0 }}
                     >
@@ -379,7 +379,7 @@ const MobileAppScreenshots: React.FC<MobileAppScreenshotsProps> = ({
 
             {/* Enhanced Image Container */}
             <motion.div
-              className="relative max-w-6xl max-h-[90vh]"
+              className="relative max-w-4xl max-h-[90vh]"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
@@ -387,23 +387,23 @@ const MobileAppScreenshots: React.FC<MobileAppScreenshotsProps> = ({
               onClick={(e) => e.stopPropagation()}
             >
               {/* Enhanced Mobile Frame in Lightbox */}
-              <div className="relative mx-auto w-full max-w-[600px] md:max-w-[700px]">
-                <div className="relative bg-gradient-to-br from-gray-800 via-gray-900 to-black rounded-[4rem] p-6 shadow-2xl mobile-frame">
-                  <div className="relative overflow-hidden rounded-[3.5rem] bg-white">
+              <div className="relative mx-auto w-full max-w-[450px] md:max-w-[500px]">
+                <div className="relative bg-gradient-to-br from-gray-800 via-gray-900 to-black rounded-[3rem] p-4 shadow-2xl mobile-frame">
+                  <div className="relative overflow-hidden rounded-[2.5rem] bg-white">
                     <img
                       src={images[currentImageIndex]}
                       alt={`${title} screenshot ${currentImageIndex + 1}`}
                       className="w-full h-auto object-cover"
                     />
                   </div>
-                  <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 w-64 h-1 bg-gradient-to-r from-white/40 via-white/60 to-white/40 rounded-full opacity-80"></div>
+                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-48 h-1 bg-gradient-to-r from-white/40 via-white/60 to-white/40 rounded-full opacity-80"></div>
                   <div className="absolute right-4 top-1/2 transform -translate-y-1/2 w-1 h-16 bg-white/30 rounded-full"></div>
                 </div>
               </div>
 
               {/* Enhanced Image Counter */}
               <motion.div
-                className="absolute bottom-6 left-1/2 transform -translate-x-1/2 bg-black/70 backdrop-blur-sm text-white px-6 py-3 rounded-full text-sm border border-white/20"
+                className="absolute bottom-8 left-1/2 transform -translate-x-1/2 bg-black/70 backdrop-blur-sm text-white px-6 py-3 rounded-full text-sm border border-white/20"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}

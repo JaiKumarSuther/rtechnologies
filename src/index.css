@@ -1072,3 +1072,150 @@ button, a, input, textarea, select, [role="button"], [tabindex] {
   scrollbar-gutter: stable;
 }
 
+/* Enhanced Mobile Frame Styles */
+.mobile-frame-enhanced {
+  @apply relative bg-gradient-to-br from-gray-800 via-gray-900 to-black rounded-[4rem] p-6 shadow-2xl;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-frame-enhanced:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.5),
+    0 10px 25px hsl(180 100% 60% / 0.3);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.mobile-screen-enhanced {
+  @apply relative overflow-hidden rounded-[3.5rem] bg-white;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-screen-enhanced img {
+  @apply w-full h-auto object-cover;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-frame-enhanced:hover .mobile-screen-enhanced img {
+  transform: scale(1.05);
+}
+
+/* Enhanced Project Hero Styles */
+.project-hero {
+  @apply grid lg:grid-cols-2 gap-16 items-center min-h-[80vh];
+  background: linear-gradient(135deg, hsl(220 15% 4% / 0.5) 0%, hsl(220 15% 2% / 0.5) 100%);
+  backdrop-filter: blur(20px);
+  border-radius: 2rem;
+  padding: 3rem;
+  margin: 2rem 0;
+}
+
+.project-hero-left {
+  @apply space-y-8;
+}
+
+.project-badge {
+  @apply inline-flex items-center gap-3 px-6 py-3;
+  background: linear-gradient(135deg, hsl(180 100% 60% / 0.2) 0%, hsl(200 100% 70% / 0.1) 100%);
+  border: 1px solid hsl(180 100% 60% / 0.3);
+  border-radius: 2rem;
+  backdrop-filter: blur(10px);
+}
+
+.project-title {
+  @apply text-5xl md:text-7xl font-bold text-white leading-tight;
+  background: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(180 100% 60%) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.project-tagline {
+  @apply text-2xl text-gray-300 font-light;
+}
+
+.project-description {
+  @apply text-lg text-gray-400 leading-relaxed max-w-lg;
+}
+
+/* Enhanced Technology Stack */
+.tech-stack-enhanced {
+  @apply grid md:grid-cols-2 lg:grid-cols-4 gap-6;
+}
+
+.tech-card-enhanced {
+  @apply p-6 text-center;
+  background: linear-gradient(135deg, hsl(220 15% 10% / 0.8) 0%, hsl(220 15% 8% / 0.8) 100%);
+  backdrop-filter: blur(20px);
+  border: 1px solid hsl(180 100% 60% / 0.15);
+  border-radius: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tech-card-enhanced:hover {
+  background: linear-gradient(135deg, hsl(180 100% 60% / 0.1) 0%, hsl(200 100% 70% / 0.1) 100%);
+  border-color: hsl(180 100% 60% / 0.3);
+  transform: translateY(-4px);
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.3),
+    0 4px 12px hsl(180 100% 60% / 0.2);
+}
+
+/* Enhanced Screenshot Grid */
+.screenshot-grid-enhanced {
+  @apply space-y-12;
+}
+
+.screenshot-group-enhanced {
+  @apply relative;
+}
+
+.screenshot-header-enhanced {
+  @apply mb-8 text-center;
+}
+
+.screenshot-header-badge {
+  @apply inline-flex items-center gap-3 px-8 py-4;
+  background: linear-gradient(135deg, hsl(180 100% 60% / 0.2) 0%, hsl(200 100% 70% / 0.1) 100%);
+  border: 1px solid hsl(180 100% 60% / 0.3);
+  border-radius: 2rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.screenshot-header-badge:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.screenshot-grid-container {
+  @apply grid gap-8 md:gap-10 lg:gap-12;
+}
+
+/* Enhanced Lightbox */
+.lightbox-backdrop-enhanced {
+  @apply fixed inset-0 z-50 flex items-center justify-center p-4;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(20px);
+}
+
+.lightbox-image-container-enhanced {
+  @apply relative max-w-7xl max-h-[90vh];
+}
+
+.lightbox-mobile-frame-enhanced {
+  @apply relative mx-auto w-full max-w-[700px] md:max-w-[800px];
+}
+
+.lightbox-frame-enhanced {
+  @apply relative bg-gradient-to-br from-gray-800 via-gray-900 to-black rounded-[5rem] p-8 shadow-2xl;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.lightbox-screen-enhanced {
+  @apply relative overflow-hidden rounded-[4.5rem] bg-white;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+

@@ -161,9 +161,9 @@ Would you like me to help you schedule a meeting or would you prefer to contact 
       };
     }
     
-    if (input.includes('portfolio') || input.includes('work') || input.includes('projects')) {
+    if (input.includes('work') || input.includes('projects')) {
       return {
-        content: `**Our Portfolio Highlights** 🎨
+        content: `**Our Project Highlights** 🎨
 
 We've delivered amazing projects across various industries:
 
@@ -173,7 +173,7 @@ We've delivered amazing projects across various industries:
 • **Fintech Solutions** - Payment and banking apps
 • **Entertainment Apps** - Gaming and media platforms
 
-You can view our full portfolio at our website. Would you like me to tell you about any specific project or technology stack we use?`
+Would you like me to tell you about any specific project or technology stack we use?`
       };
     }
     
@@ -263,7 +263,7 @@ I understand you're asking about "${userInput}". While I can help with general i
 • **Sending us an email** at hello@rtechnologies.pk
 • **Calling us** at +92 300 1234567
 
-Is there anything specific about our services, pricing, or portfolio that I can help you with?`
+    Is there anything specific about our services or pricing that I can help you with?`
     };
   }
 
