@@ -110,18 +110,18 @@ const Portfolio = () => {
       title: "Check In",
       description: "Checkin is a location-based social app that enables users to check in at nearby venues, connect with others, and engage in real-time chats, all powered by Node.js and Flutter.",
       images: [
-        "/src/assets/checkin-1.png", 
-        "/src/assets/checkin-2.png", 
-        "/src/assets/checkin-3.png"
+        "src/assets/checkin-1.png", 
+        "src/assets/checkin-2.png", 
+        "src/assets/checkin-3.png"
       ],
     },
     {
       title: "Holla Gorilla",
       description: "An engaging social app designed to foster community conversations and spontaneous social interactions. Targeted towards individuals looking for fun, adventure, and like-minded social groups.",
       images: [
-        "/src/assets/holla-gorrila-1.png", 
-        "/src/assets/holla-gorrila-2.png", 
-        "/src/assets/holla-gorrila-3.png"
+        "src/assets/holla-gorrila-1.png", 
+        "src/assets/holla-gorrila-2.png", 
+        "src/assets/holla-gorrila-3.png"
       ],
       reverse: true,
     },
@@ -129,18 +129,18 @@ const Portfolio = () => {
       title: "Guided by Culture",
       description: "A mentorship app where mentees can hire mentors, chat, arrange meetings, and pay for mentorship services. Built using Spring Boot (Java) and Flutter, it offers a seamless experience for personalized skill development.",
       images: [
-        "/src/assets/guided-by-culture-1.png", 
-        "/src/assets/guided-by-culture-2.png", 
-        "/src/assets/guided-by-culture-3.png"
+        "src/assets/guided-by-culture-1.png", 
+        "src/assets/guided-by-culture-2.png", 
+        "src/assets/guided-by-culture-3.png"
       ],
     },
     {
       title: "Nursery App",
       description: "A nursery platform enabling parents and staff to coordinate activities, track progress, and streamline communication with a delightful mobile-first experience.",
       images: [
-        "/src/assets/nursery-1.png", 
-        "/src/assets/nursery-2.png", 
-        "/src/assets/nursery-3.png"
+        "src/assets/nursery-1.png", 
+        "src/assets/nursery-2.png", 
+        "src/assets/nursery-3.png"
       ],
       reverse: true,
     },
@@ -148,18 +148,18 @@ const Portfolio = () => {
       title: "Dance Around",
       description: "A social app where users can make friends, chat to earn points, and jam together by listening to the same song.",
       images: [
-        "/src/assets/dance-around-1.png", 
-        "/src/assets/dance-around-2.png", 
-        "/src/assets/dance-around-3.png"
+        "src/assets/dance-around-1.png", 
+        "src/assets/dance-around-2.png", 
+        "src/assets/dance-around-3.png"
       ],
     },
     {
       title: "Blush Application",
       description: "A hookah bar app where users can explore various hookah flavors, order food and book events. A seamless way to enjoy a personalized hookah and food experience.",
       images: [
-        "/src/assets/blush-application-1.png", 
-        "/src/assets/blush-application-2.png", 
-        "/src/assets/blush-application-3.png"
+        "src/assets/blush-application-1.png", 
+        "src/assets/blush-application-2.png", 
+        "src/assets/blush-application-3.png"
       ],
       reverse: true,
     },
@@ -167,18 +167,18 @@ const Portfolio = () => {
       title: "IPTV",
       description: "Internet Protocol Television (IPTV) apps allow users to stream live TV, video-on-demand, and time-shifted media over the internet on various devices.",
       images: [
-        "/src/assets/iptv-1.png", 
-        "/src/assets/iptv-2.png", 
-        "/src/assets/iptv-3.png"
+        "src/assets/iptv-1.png", 
+        "src/assets/iptv-2.png", 
+        "src/assets/iptv-3.png"
       ],
     },
     {
       title: "Hi Techie",
       description: "A jobs and freelance marketplace where users can apply for jobs across various domains or hire freelancers for project-based and part-time work.",
       images: [
-        "/src/assets/hitechie-1.png", 
-        "/src/assets/hitechie-2.png", 
-        "/src/assets/hitechie-3.png"
+        "src/assets/hitechie-1.png", 
+        "src/assets/hitechie-2.png", 
+        "src/assets/hitechie-3.png"
       ],
       reverse: true,
     },
@@ -186,9 +186,9 @@ const Portfolio = () => {
       title: "Fixit",
       description: "A service booking app similar to Indrive, but instead of booking cars, users can book service providers for various tasks such as home repairs, cleaning, plumbing, and more.",
       images: [
-        "/src/assets/fixit-1.png", 
-        "/src/assets/fixit-2.png", 
-        "/src/assets/fixit-3.png"
+        "src/assets/fixit-1.png", 
+        "src/assets/fixit-2.png", 
+        "src/assets/fixit-3.png"
       ],
     },
   ];
@@ -272,24 +272,25 @@ const Portfolio = () => {
               {description}
             </p>
           </div>
-          <div ref={galleryRef} className="screenshot-group grid grid-cols-3 gap-6 perspective-1000">
+          <div ref={galleryRef} className="screenshot-group grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 perspective-1000">
             {images.map((src, idx) => (
               <figure 
                 key={idx} 
-                className="transform-3d card-3d-hover mobile-frame-enhanced mobile-frame-animated !rounded-none" 
+                className="transform-3d card-3d-hover mobile-frame-enhanced mobile-frame-animated !rounded-none w-full max-w-sm mx-auto" 
                 aria-label={`${title} screenshot ${idx + 1}`}
                 style={{ 
                   opacity: 0, 
                   transform: 'translateY(24px)' 
                 }}
               >
-                <div className="mobile-screen-enhanced h-full !rounded-none">
+                <div className="mobile-screen-enhanced aspect-[9/19] w-full max-h-[500px] !rounded-none overflow-hidden">
                   <img
                     src={src}
                     alt={`${title} screen ${idx + 1}`}
                     loading="lazy"
-                    className="w-full h-full object-cover !rounded-none"
+                    className="w-full h-full object-cover object-top !rounded-none"
                     onError={(e) => {
+                      console.error(`Failed to load image: ${src}`);
                       (e.currentTarget as HTMLImageElement).style.display = "none";
                     }}
                   />
@@ -318,7 +319,7 @@ const Portfolio = () => {
           <section ref={heroRef} className="project-hero">
             <div className="project-hero-left">
               <span className="project-badge">Design & Development Portfolio</span>
-              <h1 className="project-title text-3d-premium">
+              <h1 className="project-title text-3d-premium text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
                 {"Bringing Ideas to Life Through ".split(" ").map((w, i) => (
                   <span key={i} className="word word-3d mr-1">{w}</span>
                 ))}

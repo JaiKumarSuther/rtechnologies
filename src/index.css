@@ -819,10 +819,24 @@ button, a, input, textarea, select, [role="button"], [tabindex] {
 /* Screenshot Grid Enhancements */
 .screenshot-group {
   background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(59, 130, 246, 0.04) 100%);
-  border-radius: 1.5rem;
-  padding: 2rem;
+  border-radius: 1rem;
+  padding: 1rem;
   border: 1px solid rgba(59, 130, 246, 0.15);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .screenshot-group {
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .screenshot-group {
+    padding: 2rem;
+  }
 }
 
 .screenshot-group:hover {
@@ -867,6 +881,13 @@ button, a, input, textarea, select, [role="button"], [tabindex] {
   .two-column-layout {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .two-column-layout {
+    gap: 1.5rem;
+    padding: 1rem;
   }
 }
 
@@ -973,10 +994,25 @@ button, a, input, textarea, select, [role="button"], [tabindex] {
 /* Dynamic Layout Enhancements */
 .screenshot-section {
   background: linear-gradient(135deg, rgba(59, 130, 246, 0.02) 0%, rgba(59, 130, 246, 0.01) 100%);
-  border-radius: 1.5rem;
-  padding: 2rem;
+  border-radius: 1rem;
+  padding: 1.5rem;
   border: 1px solid rgba(59, 130, 246, 0.05);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .screenshot-section {
+    border-radius: 1.5rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .screenshot-section {
+    padding: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
 }
 
 .screenshot-section:hover {
@@ -1074,9 +1110,19 @@ button, a, input, textarea, select, [role="button"], [tabindex] {
 
 /* Enhanced Mobile Frame Styles */
 .mobile-frame-enhanced {
-  @apply relative bg-gradient-to-br from-gray-800 via-gray-900 to-black rounded-[4rem] p-6 shadow-2xl;
+  @apply relative bg-gradient-to-br from-gray-800 via-gray-900 to-black rounded-[1.5rem] sm:rounded-[2rem] lg:rounded-[3rem] p-2 sm:p-3 lg:p-4 shadow-2xl;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  max-width: 100%;
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .mobile-frame-enhanced {
+    padding: 0.75rem;
+    border-radius: 1rem;
+    max-height: 500px;
+  }
 }
 
 .mobile-frame-enhanced:hover {
@@ -1088,8 +1134,14 @@ button, a, input, textarea, select, [role="button"], [tabindex] {
 }
 
 .mobile-screen-enhanced {
-  @apply relative overflow-hidden rounded-[3.5rem] bg-white;
+  @apply relative overflow-hidden rounded-[1rem] sm:rounded-[1.5rem] lg:rounded-[2rem] bg-white;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 640px) {
+  .mobile-screen-enhanced {
+    border-radius: 0.75rem;
+  }
 }
 
 .mobile-screen-enhanced img {
@@ -1103,12 +1155,28 @@ button, a, input, textarea, select, [role="button"], [tabindex] {
 
 /* Enhanced Project Hero Styles */
 .project-hero {
-  @apply grid lg:grid-cols-2 gap-16 items-center min-h-[80vh];
+  @apply grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center min-h-[60vh] sm:min-h-[70vh] lg:min-h-[80vh];
   background: linear-gradient(135deg, hsl(220 15% 4% / 0.5) 0%, hsl(220 15% 2% / 0.5) 100%);
   backdrop-filter: blur(20px);
-  border-radius: 2rem;
-  padding: 3rem;
-  margin: 2rem 0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin: 1rem 0;
+}
+
+@media (min-width: 640px) {
+  .project-hero {
+    border-radius: 1.5rem;
+    padding: 2rem;
+    margin: 1.5rem 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .project-hero {
+    border-radius: 2rem;
+    padding: 3rem;
+    margin: 2rem 0;
+  }
 }
 
 .project-hero-left {
@@ -1124,7 +1192,7 @@ button, a, input, textarea, select, [role="button"], [tabindex] {
 }
 
 .project-title {
-  @apply text-5xl md:text-7xl font-bold text-white leading-tight;
+  @apply font-bold text-white leading-tight;
   background: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(180 100% 60%) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
